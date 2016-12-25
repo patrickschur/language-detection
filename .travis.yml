@@ -1,0 +1,22 @@
+language: php
+
+php:
+  - 7.0
+  - 7.1
+  - nightly
+
+before_install:
+  - composer self-update
+  - composer clear-cache
+
+install:
+  - travis_retry composer update --no-interaction --no-suggest --prefer-source --optimize-autoloader
+
+script:
+  - phpunit
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  - email: false
