@@ -1,0 +1,33 @@
+{
+  "name": "patrickschur/language-detection",
+  "type": "library",
+  "description": "A language detection library for PHP.",
+  "keywords": ["language", "detection"],
+  "homepage": "https://github.com/patrickschur/language-detection",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Patrick Schur",
+      "email": "patrick_schur@outlook.de"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LanguageDetection\\": "src/LanguageDetection"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "LanguageDetection\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^7.1",
+    "ext-mbstring": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.7"
+  }
+}
