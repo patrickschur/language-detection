@@ -10,7 +10,7 @@ namespace LanguageDetection;
  * @author Patrick Schur
  * @package LanguageDetection
  */
-class LanguageResult
+class LanguageResult implements \JsonSerializable
 {
     private $result = [];
 
@@ -24,21 +24,37 @@ class LanguageResult
     }
 
     /**
-     * @param \string[] ...$whitelist
      * @return array
      */
-    public function whitelist(string ...$whitelist): array
+    public function jsonSerialize()
     {
-        return array_intersect_key($this->result, array_flip($whitelist));
+        return $this->result;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return key($this->result);
+    }
+
+    /**
+     * @param \string[] ...$whitelist
+     * @return LanguageResult
+     */
+    public function whitelist(string ...$whitelist): LanguageResult
+    {
+        return new LanguageResult(array_intersect_key($this->result, array_flip($whitelist)));
     }
 
     /**
      * @param \string[] ...$blacklist
-     * @return array
+     * @return LanguageResult
      */
-    public function blacklist(string ...$blacklist): array
+    public function blacklist(string ...$blacklist): LanguageResult
     {
-        return array_diff_key($this->result, array_flip($blacklist));
+        return new LanguageResult(array_diff_key($this->result, array_flip($blacklist)));
     }
 
     /**
@@ -47,5 +63,15 @@ class LanguageResult
     public function all(): array
     {
         return $this->result;
+    }
+
+    /**
+     * @param int $offset
+     * @param int|null $length
+     * @return LanguageResult
+     */
+    public function limit(int $offset, int $length = null): LanguageResult
+    {
+        return new LanguageResult(array_slice($this->result, $offset, $length));
     }
 }

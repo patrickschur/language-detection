@@ -32,7 +32,7 @@ $t = new Trainer();
  
 $t->learn();
 ```
-
+ 
 If we have our language profile, we can classify texts by their language.
 To detect the language correctly, the length of the input text should be at least some sentences.
  
@@ -56,24 +56,47 @@ $ld->detect('Mag het een onsje meer zijn?')->all();
 */
  
 /* provide a whitelist */
-$ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl');
+$ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->all();
 /*
     [
         "nl" => 0.65733333333333,
+        "af" => 0.50994444444444,
         "nn" => 0.48422222222222,
         "de" => 0.45544444444444
     ]
 */
  
 /* provide a blacklist */
-$ld->detect('Mag het een onsje meer zijn?')->blacklist('de', 'dk', 'sv');
+$ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb')->all();
 /*
     [
         "nl" => 0.65733333333333,
         "af" => 0.50994444444444,
+        "nn" => 0.48422222222222,
+        "sv" => 0.46066666666667,
+        "de" => 0.45544444444444,
+        ...
+    ]
+*/
+ 
+/* specify the number of records to return */
+$ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->all();
+/*
+    [
+        "nl" => 0.65733333333333,
+        "af" => 0.50994444444444,
+        "nn" => 0.48422222222222
+    ]
+*/
+ 
+/* combine */
+$ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(0, 4)->all();
+/*
+    [
+        "nl" => 0.65733333333333,
         "nb" => 0.48533333333333,
         "nn" => 0.48422222222222,
-        ...
+        "de" => 0.45544444444444
     ]
 */
 ```
