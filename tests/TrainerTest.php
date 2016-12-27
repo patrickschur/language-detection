@@ -14,6 +14,24 @@ use LanguageDetection\Trainer;
  */
 class TrainerTest extends \PHPUnit_Framework_TestCase
 {
+    public function testLearn()
+    {
+        $t = new Trainer();
+
+        $t->setMaxNgrams(350);
+
+        $expected = '';
+
+        foreach (new \GlobIterator(__DIR__ . '/../etc/[^_]*') as $file)
+        {
+            $expected .= $file->getBasename() . PHP_EOL;
+        }
+
+        $this->expectOutputString($expected);
+
+        $t->learn();
+    }
+
     public function testFilesAreReadable()
     {
         foreach (new \GlobIterator(__DIR__ . '/../etc/[^_]*') as $file)
