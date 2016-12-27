@@ -34,6 +34,7 @@ class TrainerTest extends \PHPUnit_Framework_TestCase
     {
         $t = new Trainer();
 
+        $t->setMaxLength(3);
         $t->setMinLength(42);
     }
 
@@ -54,6 +55,7 @@ class TrainerTest extends \PHPUnit_Framework_TestCase
     {
         $t = new Trainer();
 
+        $t->setMinLength(1);
         $t->setMaxLength(0);
     }
 
