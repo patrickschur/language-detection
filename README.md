@@ -104,7 +104,7 @@ $ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(
 Supported languages:
 -
 
-It supports up to now 77 languages.
+It supports up to now 85 languages.
 If your language not supported, feel free to add your own language files.
 
 - ab (Abkhaz)
@@ -176,11 +176,19 @@ If your language not supported, feel free to add your own language files.
 - so (Somali)
 - sv (Swedish)
 - th (Thai)
+- tl (Tagalog)
 - tr (Turkish)
+- tt (Tatar)
 - ty (Tahitian)
-- ug (Uyghur)
+- ug-Arab (Uyghur (Arabic))
+- ug-Latn (Uyghur (Latin))
 - uk (Ukrainian)
 - uz (Uzbek)
+- ve (Venda)
 - vi (Vietnamese)
+- wa (Walloon)
+- wo (Wolof)
+- xh (Xhosa)
+- yo (Yoruba)
 - zh-Hans (Chinese, Mandarin (Simplified))
 - zh-Hant (Chinese, Mandarin (Traditional))
