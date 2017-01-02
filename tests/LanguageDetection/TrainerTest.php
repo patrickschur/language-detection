@@ -9,8 +9,8 @@ use LanguageDetection\Trainer;
 /**
  * Class TrainerTest
  *
- * @author Patrick Schur
- * @package LanguageDetector
+ * @author Patrick Schur <patrick_schur@outlook.de>
+ * @package LanguageDetection\Tests
  */
 class TrainerTest extends \PHPUnit_Framework_TestCase
 {

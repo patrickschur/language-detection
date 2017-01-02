@@ -7,7 +7,7 @@ namespace LanguageDetection;
 /**
  * Class Language
  *
- * @author Patrick Schur
+ * @author Patrick Schur <patrick_schur@outlook.de>
  * @package LanguageDetection
  */
 class Language

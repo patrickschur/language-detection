@@ -9,7 +9,7 @@ use LanguageDetection\Language;
 /**
  * Class LanguageTest
  *
- * @author Patrick Schur
+ * @author Patrick Schur <patrick_schur@outlook.de>
  * @package LanguageDetection\Tests
  */
 class LanguageResultTest extends \PHPUnit_Framework_TestCase

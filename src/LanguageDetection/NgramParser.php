@@ -4,6 +4,12 @@ declare(strict_types = 1);
 
 namespace LanguageDetection;
 
+/**
+ * Class NgramParser
+ *
+ * @author Patrick Schur <patrick_schur@outlook.de>
+ * @package LanguageDetection
+ */
 trait NgramParser
 {
     /**
