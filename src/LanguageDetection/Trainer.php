@@ -27,6 +27,6 @@ class Trainer
             $tokens[$file->getBasename()] = $this->getNgrams($content);
         }
 
-        file_put_contents(__DIR__ . '/../../etc/_langs.json', json_encode($tokens, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        file_put_contents(__DIR__ . '/../../etc/_langs.json', json_encode($tokens, JSON_UNESCAPED_UNICODE));
     }
 }
