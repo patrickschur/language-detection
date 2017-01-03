@@ -20,7 +20,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "LanguageDetection\\Tests\\": "tests/LanguageDetection"
+      "LanguageDetection\\Tests\\": "tests"
     }
   },
   "require": {
