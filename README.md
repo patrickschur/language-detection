@@ -7,7 +7,10 @@
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.0-FF.svg?style=flat-square)](http://php.net/)
 [![License](https://img.shields.io/packagist/l/patrickschur/language-detection.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-A language detection library for PHP. Detect the language from a given text, based on [N-grams](https://en.wikipedia.org/wiki/N-gram).
+This library can detect the language of a given text string.
+It can parse given training text in many different idioms into a sequence of [N-grams](https://en.wikipedia.org/wiki/N-gram) and builds a database file in JSON format to be used in the detection phase.
+Then it can take a given text and detect its language using the database previously generated in the training phase.
+The library comes with text samples used for training and detecting text in 85 languages.
 
 Install via Composer
 -
@@ -19,11 +22,8 @@ $ composer require patrickschur/language-detection
 Basic Usage
 -
 
-Before we can recognize the language from a given text, we have to generate a language profile for each language.
-From the beginning it comes with a pre-trained language profile ([`etc/_langs.json`](etc/_langs.json)).<br>
-Also you can add new files to [`etc`](etc) or change existing ones.
-
-If you have added your own files, you must first generate a language profile. Otherwise skip this step.
+If you have added your own files, you must first generate a language profile. 
+Otherwise skip this step.
  
 ```php
 use LanguageDetection\Trainer;
@@ -33,7 +33,7 @@ $t = new Trainer();
 $t->learn();
 ```
  
-If we have our language profile, we can classify texts by their language.
+Now, we can classify texts by their language.
 To detect the language correctly, the length of the input text should be at least some sentences.
  
 ```php
@@ -89,7 +89,6 @@ $ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->all();
     ]
 */
  
-/* combine */
 $ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(0, 4)->all();
 /*
     [
@@ -103,8 +102,6 @@ $ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(
 
 Supported languages:
 -
-
-It supports up to now 85 languages.
 If your language not supported, feel free to add your own language files.
 
 - ab (Abkhaz)
