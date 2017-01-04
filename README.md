@@ -10,7 +10,7 @@
 This library can detect the language of a given text string.
 It can parse given training text in many different idioms into a sequence of [N-grams](https://en.wikipedia.org/wiki/N-gram) and builds a database file in JSON format to be used in the detection phase.
 Then it can take a given text and detect its language using the database previously generated in the training phase.
-The library comes with text samples used for training and detecting text in 85 languages.
+The library comes with text samples used for training and detecting text in 104 languages.
 
 Install via Composer
 -
@@ -46,10 +46,13 @@ $ld->detect('Mag het een onsje meer zijn?')->all();
     [
         "nl" => 0.65733333333333,
         "af" => 0.50994444444444,
+        "br" => 0.49177777777778,
         "nb" => 0.48533333333333,
         "nn" => 0.48422222222222,
+        "fy" => 0.47361111111111,
         "dk" => 0.46855555555556,
         "sv" => 0.46066666666667,
+        "bi" => 0.45722222222222,
         "de" => 0.45544444444444,
         ...
     ]
@@ -67,14 +70,16 @@ $ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->
 */
  
 /* provide a blacklist */
-$ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb')->all();
+$ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb', 'de')->all();
 /*
     [
         "nl" => 0.65733333333333,
         "af" => 0.50994444444444,
+        "br" => 0.49177777777778,
         "nn" => 0.48422222222222,
+        "fy" => 0.47361111111111,
         "sv" => 0.46066666666667,
-        "de" => 0.45544444444444,
+        "bi" => 0.45722222222222,
         ...
     ]
 */
@@ -85,7 +90,7 @@ $ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->all();
     [
         "nl" => 0.65733333333333,
         "af" => 0.50994444444444,
-        "nn" => 0.48422222222222
+        "br" => 0.49177777777778
     ]
 */
  
@@ -93,9 +98,9 @@ $ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(
 /*
     [
         "nl" => 0.65733333333333,
+        "br" => 0.49177777777778,
         "nb" => 0.48533333333333,
-        "nn" => 0.48422222222222,
-        "de" => 0.45544444444444
+        "nn" => 0.48422222222222
     ]
 */
 ```
@@ -108,16 +113,26 @@ If your language not supported, feel free to add your own language files.
 - af (Afrikaans)
 - am (Amharic)
 - ar (Arabic)
+- ay (Aymara)
 - az-Cyrl (Azerbaijani, North (Cyrillic))
 - az-Latn (Azerbaijani, North (Latin))
 - be (Belarusan)
 - bg (Bulgarian)
+- bi (Bislama)
 - bn (Bengali)
+- bo (Tibetan)
+- br (Breton)
+- bs-Cyrl (Bosnian (Cyrillic))
+- bs-Latn (Bosnian (Latin))
+- ca (Catalan)
+- ch (Chamorro)
 - co (Corsican)
+- cr (Cree)
 - cs (Czech)
 - cy (Welsh)
 - de (German)
 - dk (Danish)
+- dz (Dzongkha)
 - el-monoton (Greek (monotonic))
 - el-polyton (Greek (polytonic))
 - en (English)
@@ -130,10 +145,12 @@ If your language not supported, feel free to add your own language files.
 - fj (Fijian)
 - fo (Faroese)
 - fr (French)
+- fy (Frisian)
 - ga (Gaelic, Irish)
 - gd (Gaelic, Scottish)
 - gl (Galician)
 - gn (Guarani)
+- gu (Gujarati)
 - ha (Hausa)
 - he (Hebrew)
 - hi (Hindi)
@@ -141,6 +158,7 @@ If your language not supported, feel free to add your own language files.
 - hu (Hungarian)
 - hy (Armenian)
 - ia (Interlingua)
+- id (Indonesian)
 - ig (Igbo)
 - io (Ido)
 - is (Icelandic)
@@ -149,7 +167,9 @@ If your language not supported, feel free to add your own language files.
 - jp (Japanese)
 - jv (Javanese)
 - ka (Georgian)
+- km (Khmer)
 - ko (Korean)
+- kr (Kanuri)
 - ku (Kurdish)
 - la (Latin)
 - lg (Ganda)
@@ -158,19 +178,23 @@ If your language not supported, feel free to add your own language files.
 - lv (Latvian)
 - mh (Marshallese)
 - mn-Cyrl (Mongolian, Halh (Cyrillic))
-- ms (Malay)
+- ms-Arab (Malay (Arabic))
+- ms-Latn (Malay (Latin))
 - mt (Maltese)
 - nb (Norwegian, Nynorsk)
 - nl (Dutch)
 - nn (Norwegian, Bokmål)
 - nv (Navajo)
 - pl (Polish)
-- pt (Portuguese)
+- pt-BR (Portuguese (Brazil))
+- pt-PT (Portuguese (Portugal))
 - ro (Romanian)
 - ru (Russian)
 - sk (Slovak)
 - sl (Slovene)
 - so (Somali)
+- sq (Albanian)
+- ss (Swati)
 - sv (Swedish)
 - th (Thai)
 - tl (Tagalog)
