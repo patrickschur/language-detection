@@ -10,7 +10,7 @@
 This library can detect the language of a given text string.
 It can parse given training text in many different idioms into a sequence of [N-grams](https://en.wikipedia.org/wiki/N-gram) and builds a database file in JSON format to be used in the detection phase.
 Then it can take a given text and detect its language using the database previously generated in the training phase.
-The library comes with text samples used for training and detecting text in 104 languages.
+The library comes with text samples used for training and detecting text in 105 languages.
 
 Install via Composer
 -
@@ -196,6 +196,7 @@ If your language not supported, feel free to add your own language files.
 - sq (Albanian)
 - ss (Swati)
 - sv (Swedish)
+- ta (Tamil)
 - th (Thai)
 - tl (Tagalog)
 - tr (Turkish)
