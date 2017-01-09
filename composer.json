@@ -1,8 +1,8 @@
 {
   "name": "patrickschur/language-detection",
   "type": "library",
-  "description": "A language detection library for PHP.",
-  "keywords": ["language", "detection"],
+  "description": "A language detection library for PHP. Detects the language from a given text string.",
+  "keywords": ["language", "detection", "detect"],
   "homepage": "https://github.com/patrickschur/language-detection",
   "license": "MIT",
   "minimum-stability": "dev",
