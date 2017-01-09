@@ -10,7 +10,7 @@ namespace LanguageDetection;
  * @author Patrick Schur <patrick_schur@outlook.de>
  * @package LanguageDetection
  */
-class LanguageResult implements \JsonSerializable
+class LanguageResult implements \JsonSerializable, \IteratorAggregate
 {
     private $result = [];
 
@@ -60,9 +60,17 @@ class LanguageResult implements \JsonSerializable
     /**
      * @return array
      */
-    public function all(): array
+    public function close(): array
     {
         return $this->result;
+    }
+
+    /**
+     * @return \ArrayIterator
+     */
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->result);
     }
 
     /**

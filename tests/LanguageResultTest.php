@@ -20,11 +20,11 @@ class LanguageResultTest extends \PHPUnit_Framework_TestCase
 
         $count = (new \GlobIterator(__DIR__ . '/../etc/[^_]*'))->count();
 
-        $sample = $l->detect("Example");
+        $sample = $l->detect('Example');
 
         for ($i = 0; $i < $count; $i++)
         {
-            $this->assertEquals($i, count($sample->limit(0, $i)->all()));
+            $this->assertEquals($i, count($sample->limit(0, $i)->close()));
         }
     }
 
@@ -37,7 +37,7 @@ class LanguageResultTest extends \PHPUnit_Framework_TestCase
     {
         $l = new Language();
 
-        $this->assertArrayHasKey($expected, $l->detect($sample)->whitelist($expected)->all());
+        $this->assertArrayHasKey($expected, $l->detect($sample)->whitelist($expected)->close());
     }
 
     /**
@@ -49,7 +49,7 @@ class LanguageResultTest extends \PHPUnit_Framework_TestCase
     {
         $l = new Language();
 
-        $this->assertArrayNotHasKey($expected, $l->detect($sample)->blacklist($expected)->all());
+        $this->assertArrayNotHasKey($expected, $l->detect($sample)->blacklist($expected)->close());
     }
 
     /**
@@ -68,11 +68,24 @@ class LanguageResultTest extends \PHPUnit_Framework_TestCase
     {
         $l = new Language();
 
-        $expected = $l->detect("Example");
+        $expected = $l->detect('Example');
 
         $serialized = json_encode($expected);
 
-        $this->assertEquals($expected->all(), json_decode($serialized, true));
+        $this->assertEquals($expected->close(), json_decode($serialized, true));
+    }
+
+    public function testArrayIterator()
+    {
+        $l = new Language();
+
+        $actual = $expected = $l->detect('Example');
+        $actual = $actual->close();
+
+        foreach ($expected as $key => $value)
+        {
+            $this->assertEquals($value, $actual[$key]);
+        }
     }
 
     /**
