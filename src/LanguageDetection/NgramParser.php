@@ -10,7 +10,7 @@ namespace LanguageDetection;
  * @author Patrick Schur <patrick_schur@outlook.de>
  * @package LanguageDetection
  */
-trait NgramParser
+abstract class NgramParser
 {
     /**
      * @var int

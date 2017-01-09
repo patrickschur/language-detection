@@ -10,10 +10,8 @@ namespace LanguageDetection;
  * @author Patrick Schur <patrick_schur@outlook.de>
  * @package LanguageDetection
  */
-class Language
+class Language extends NgramParser
 {
-    use NgramParser;
-
     /**
      * @var array
      */

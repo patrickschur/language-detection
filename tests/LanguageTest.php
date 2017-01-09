@@ -22,7 +22,7 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
         {
             $content = file_get_contents($file->getPathname());
 
-            $this->assertEquals(key($l->detect($content)->all()), $file->getBasename());
+            $this->assertEquals(key($l->detect($content)->close()), $file->getBasename());
         }
     }
 
@@ -35,7 +35,7 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
     {
         $l = new Language();
 
-        $this->assertEquals($expected, key($l->detect($sample)->all()));
+        $this->assertEquals($expected, key($l->detect($sample)->close()));
     }
 
     /**

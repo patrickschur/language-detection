@@ -10,10 +10,8 @@ namespace LanguageDetection;
  * @author Patrick Schur <patrick_schur@outlook.de>
  * @package LanguageDetection
  */
-class Trainer
+class Trainer extends NgramParser
 {
-    use NgramParser;
-
     public function learn()
     {
         $tokens = [];

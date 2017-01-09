@@ -41,7 +41,7 @@ use LanguageDetection\Language;
  
 $ld = new Language;
  
-$ld->detect('Mag het een onsje meer zijn?')->all();
+$ld->detect('Mag het een onsje meer zijn?')->close();
 /*
     [
         "nl" => 0.65733333333333,
@@ -59,7 +59,7 @@ $ld->detect('Mag het een onsje meer zijn?')->all();
 */
  
 /* provide a whitelist */
-$ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->all();
+$ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->close();
 /*
     [
         "nl" => 0.65733333333333,
@@ -70,7 +70,7 @@ $ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->
 */
  
 /* provide a blacklist */
-$ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb', 'de')->all();
+$ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb', 'de')->close();
 /*
     [
         "nl" => 0.65733333333333,
@@ -85,7 +85,7 @@ $ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb', 'de')->all();
 */
  
 /* specify the number of records to return */
-$ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->all();
+$ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->close();
 /*
     [
         "nl" => 0.65733333333333,
@@ -94,7 +94,7 @@ $ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->all();
     ]
 */
  
-$ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(0, 4)->all();
+$ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(0, 4)->close();
 /*
     [
         "nl" => 0.65733333333333,
