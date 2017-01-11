@@ -65,6 +65,15 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate
         return $this->result;
     }
 
+    public function bestResults(): LanguageResult
+    {
+        $first = array_values($this->result)[0];
+
+        return new LanguageResult(array_filter($this->result, function ($value) use (&$first) {
+            return ($first - $value) <= 0.025 ? true : false;
+        }));
+    }
+
     /**
      * @return \ArrayIterator
      */

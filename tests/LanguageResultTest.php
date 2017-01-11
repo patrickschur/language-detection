@@ -88,6 +88,19 @@ class LanguageResultTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function testBestResults()
+    {
+        $l = new Language;
+
+        $a = $l->detect('Example')->bestResults()->close();
+
+        $a = array_values($a);
+        $first = $a[0];
+        $last = array_slice($a, -1)[0];
+
+        $this->assertLessThanOrEqual(0.025, ($first - $last));
+    }
+
     /**
      * @return array
      */
