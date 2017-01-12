@@ -39,6 +39,8 @@ class Language extends NgramParser
      */
     public function detect(string $str): LanguageResult
     {
+        $str = mb_strtolower($str);
+
         $samples = $this->getNgrams($str);
 
         $result = [];

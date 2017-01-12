@@ -90,17 +90,15 @@ abstract class NgramParser
     {
         $tokens = [];
 
-        $str = mb_strtolower($str);
-
         foreach ($this->tokenize($str) as $word)
         {
-            $length = mb_strlen($word);
-
             for ($i = $this->minLength; $i <= $this->maxLength; $i++)
             {
-                for ($j = 0; ($j + $i - 1) < $length; $j++)
+                $j = 0;
+
+                while(isset($word[$j + $i - 1]))
                 {
-                    $tokens[$i][] = mb_substr($word, $j, $i);
+                    $tokens[$i][] = mb_substr($word, $j++, $i);
                 }
             }
         }

@@ -19,6 +19,7 @@ class Trainer extends NgramParser
         foreach (new \GlobIterator(__DIR__ . '/../../etc/[^_]*') as $file)
         {
             $content = file_get_contents($file->getPathname());
+            $content = mb_strtolower($content);
 
             echo $file->getBasename(), PHP_EOL;
 
