@@ -1,23 +1,19 @@
 # language-detection
-[![Build Status](https://travis-ci.org/patrickschur/language-detection.svg?branch=master)](https://travis-ci.org/patrickschur/language-detection)
-[![codecov](https://codecov.io/gh/patrickschur/language-detection/branch/master/graph/badge.svg)](https://codecov.io/gh/patrickschur/language-detection)
-[![Version](https://img.shields.io/packagist/v/patrickschur/language-detection.svg?style=flat-square)](https://packagist.org/packages/patrickschur/language-detection)
-[![Total Downloads](https://img.shields.io/packagist/dt/patrickschur/language-detection.svg?style=flat-square)](https://packagist.org/packages/patrickschur/language-detection)
-[![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?style=flat-square)](https://github.com/patrickschur/language-detection)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.0-FF.svg?style=flat-square)](http://php.net/)
-[![License](https://img.shields.io/packagist/l/patrickschur/language-detection.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+| Build Status | Code Coverage | Version | Total Downloads | Maintenance | Minimum PHP Version | License |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [![Build Status](https://travis-ci.org/patrickschur/language-detection.svg?branch=master)](https://travis-ci.org/patrickschur/language-detection) | [![codecov](https://codecov.io/gh/patrickschur/language-detection/branch/master/graph/badge.svg)](https://codecov.io/gh/patrickschur/language-detection) | [![Version](https://img.shields.io/packagist/v/patrickschur/language-detection.svg?style=flat-square)](https://packagist.org/packages/patrickschur/language-detection) | [![Total Downloads](https://img.shields.io/packagist/dt/patrickschur/language-detection.svg?style=flat-square)](https://packagist.org/packages/patrickschur/language-detection) | [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?style=flat-square)](https://github.com/patrickschur/language-detection) | [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.0-FF.svg?style=flat-square)](http://php.net/) | [![License](https://img.shields.io/packagist/l/patrickschur/language-detection.svg?style=flat-square)](https://opensource.org/licenses/MIT) |
 
 This library can detect the language of a given text string.
 It can parse given training text in many different idioms into a sequence of [N-grams](https://en.wikipedia.org/wiki/N-gram) and builds a database file in JSON format to be used in the detection phase.
 Then it can take a given text and detect its language using the database previously generated in the training phase.
-The library comes with text samples used for training and detecting text in 105 languages.
+The library comes with text samples used for training and detecting text in **105** languages.
 
-Install via Composer
+Installation using Composer
 -
 ```bash
 $ composer require patrickschur/language-detection
 ```
-> **Note:** **language-detection** requires the [Multibyte String](http://php.net/manual/en/book.mbstring.php) extension in order to work. 
+> **Note:** This library requires the [Multibyte String](http://php.net/manual/en/book.mbstring.php) extension in order to work. 
 
 Basic Usage
 -
@@ -109,108 +105,110 @@ Supported languages:
 -
 If your language not supported, feel free to add your own language files.
 
-- ab (Abkhaz)
-- af (Afrikaans)
-- am (Amharic)
-- ar (Arabic)
-- ay (Aymara)
-- az-Cyrl (Azerbaijani, North (Cyrillic))
-- az-Latn (Azerbaijani, North (Latin))
-- be (Belarusan)
-- bg (Bulgarian)
-- bi (Bislama)
-- bn (Bengali)
-- bo (Tibetan)
-- br (Breton)
-- bs-Cyrl (Bosnian (Cyrillic))
-- bs-Latn (Bosnian (Latin))
-- ca (Catalan)
-- ch (Chamorro)
-- co (Corsican)
-- cr (Cree)
-- cs (Czech)
-- cy (Welsh)
-- de (German)
-- dk (Danish)
-- dz (Dzongkha)
-- el-monoton (Greek (monotonic))
-- el-polyton (Greek (polytonic))
-- en (English)
-- eo (Esperanto)
-- es (Spanish)
-- et (Estonian)
-- eu (Basque)
-- fa (Persian)
-- fi (Finnish)
-- fj (Fijian)
-- fo (Faroese)
-- fr (French)
-- fy (Frisian)
-- ga (Gaelic, Irish)
-- gd (Gaelic, Scottish)
-- gl (Galician)
-- gn (Guarani)
-- gu (Gujarati)
-- ha (Hausa)
-- he (Hebrew)
-- hi (Hindi)
-- hr (Croatian)
-- hu (Hungarian)
-- hy (Armenian)
-- ia (Interlingua)
-- id (Indonesian)
-- ig (Igbo)
-- io (Ido)
-- is (Icelandic)
-- it (Italian)
-- iu (Inuktitut)
-- jp (Japanese)
-- jv (Javanese)
-- ka (Georgian)
-- km (Khmer)
-- ko (Korean)
-- kr (Kanuri)
-- ku (Kurdish)
-- la (Latin)
-- lg (Ganda)
-- lo (Lao)
-- lt (Lithuanian)
-- lv (Latvian)
-- mh (Marshallese)
-- mn-Cyrl (Mongolian, Halh (Cyrillic))
-- ms-Arab (Malay (Arabic))
-- ms-Latn (Malay (Latin))
-- mt (Maltese)
-- nb (Norwegian, Nynorsk)
-- nl (Dutch)
-- nn (Norwegian, Bokmål)
-- nv (Navajo)
-- pl (Polish)
-- pt-BR (Portuguese (Brazil))
-- pt-PT (Portuguese (Portugal))
-- ro (Romanian)
-- ru (Russian)
-- sk (Slovak)
-- sl (Slovene)
-- so (Somali)
-- sq (Albanian)
-- ss (Swati)
-- sv (Swedish)
-- ta (Tamil)
-- th (Thai)
-- tl (Tagalog)
-- tr (Turkish)
-- tt (Tatar)
-- ty (Tahitian)
-- ug-Arab (Uyghur (Arabic))
-- ug-Latn (Uyghur (Latin))
-- uk (Ukrainian)
-- uz (Uzbek)
-- ve (Venda)
-- vi (Vietnamese)
-- wa (Walloon)
-- wo (Wolof)
-- xh (Xhosa)
-- yo (Yoruba)
-- zh-Hans (Chinese, Mandarin (Simplified))
-- zh-Hant (Chinese, Mandarin (Traditional))
+| Language Code | Language |
+| :---: | :---: |
+| ab | Abkhaz |
+| af | Afrikaans |
+| am | Amharic |
+| ar | Arabic |
+| ay | Aymara |
+| az-Cyrl | Azerbaijani, North (Cyrillic) |
+| az-Latn | Azerbaijani, North (Latin) |
+| be | Belarusan |
+| bg | Bulgarian |
+| bi | Bislama |
+| bn | Bengali |
+| bo | Tibetan |
+| br | Breton |
+| bs-Cyrl | Bosnian (Cyrillic) |
+| bs-Latn | Bosnian (Latin) |
+| ca | Catalan |
+| ch | Chamorro |
+| co | Corsican |
+| cr | Cree |
+| cs | Czech |
+| cy | Welsh |
+| de | German |
+| dk | Danish |
+| dz | Dzongkha |
+| el-monoton | Greek (monotonic) |
+| el-polyton | Greek (polytonic) |
+| en | English |
+| eo | Esperanto |
+| es | Spanish |
+| et | Estonian |
+| eu | Basque |
+| fa | Persian |
+| fi | Finnish |
+| fj | Fijian |
+| fo | Faroese |
+| fr | French |
+| fy | Frisian |
+| ga | Gaelic, Irish |
+| gd | Gaelic, Scottish |
+| gl | Galician |
+| gn | Guarani |
+| gu | Gujarati |
+| ha | Hausa |
+| he | Hebrew |
+| hi | Hindi |
+| hr | Croatian |
+| hu | Hungarian |
+| hy | Armenian |
+| ia | Interlingua |
+| id | Indonesian |
+| ig | Igbo |
+| io | Ido |
+| is | Icelandic |
+| it | Italian |
+| iu | Inuktitut |
+| jp | Japanese |
+| jv | Javanese |
+| ka | Georgian |
+| km | Khmer |
+| ko | Korean |
+| kr | Kanuri |
+| ku | Kurdish |
+| la | Latin |
+| lg | Ganda |
+| lo | Lao |
+| lt | Lithuanian |
+| lv | Latvian |
+| mh | Marshallese |
+| mn-Cyrl | Mongolian, Halh (Cyrillic) |
+| ms-Arab | Malay (Arabic) |
+| ms-Latn | Malay (Latin) |
+| mt | Maltese |
+| nb | Norwegian, Nynorsk |
+| nl | Dutch |
+| nn | Norwegian, Bokmål |
+| nv | Navajo |
+| pl | Polish |
+| pt-BR | Portuguese (Brazil) |
+| pt-PT | Portuguese (Portugal) |
+| ro | Romanian |
+| ru | Russian |
+| sk | Slovak |
+| sl | Slovene |
+| so | Somali |
+| sq | Albanian |
+| ss | Swati |
+| sv | Swedish |
+| ta | Tamil |
+| th | Thai |
+| tl | Tagalog |
+| tr | Turkish |
+| tt | Tatar |
+| ty | Tahitian |
+| ug-Arab | Uyghur (Arabic) |
+| ug-Latn | Uyghur (Latin) |
+| uk | Ukrainian |
+| uz | Uzbek |
+| ve | Venda |
+| vi | Vietnamese |
+| wa | Walloon |
+| wo | Wolof |
+| xh | Xhosa |
+| yo | Yoruba |
+| zh-Hans | Chinese, Mandarin (Simplified) |
+| zh-Hant | Chinese, Mandarin (Traditional) |
