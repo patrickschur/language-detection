@@ -101,6 +101,19 @@ class LanguageResultTest extends \PHPUnit_Framework_TestCase
         $this->assertLessThanOrEqual(0.025, ($first - $last));
     }
 
+    public function testOffset()
+    {
+        $l = new Language;
+
+        $result = $l->detect('Example')->close();
+
+        $this->assertTrue(empty($result['NaN']));
+        $result['NaN'] = 0;
+        $this->assertEquals(0, $result['NaN']);
+
+        unset($result['NaN']);
+    }
+
     /**
      * @return array
      */
