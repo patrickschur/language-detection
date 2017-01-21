@@ -6,18 +6,29 @@
 This library can detect the language of a given text string.
 It can parse given training text in many different idioms into a sequence of [N-grams](https://en.wikipedia.org/wiki/N-gram) and builds a database file in JSON format to be used in the detection phase.
 Then it can take a given text and detect its language using the database previously generated in the training phase.
-The library comes with text samples used for training and detecting text in **105** languages.
+The library comes with text samples used for training and detecting text in 105 languages.
 
-Installation using Composer
--
+## Table of Contents
+- [Installation using Composer](#installation-using-composer)
+- [Basic Usage](#basic-usage)
+- [whitelist()](#whitelist)
+- [blacklist()](#blacklist)
+- [bestResults()](#bestresults)
+- [limit()](#limit)
+- [close()](#close)
+- [Method Chaining](#method-chaining)
+- [JsonSerializable](#jsonserializable)
+- [IteratorAggregate](#iteratoraggregate)
+- [ArrayAccess](#arrayaccess)
+- [__toString()](#__tostring)
+
+## Installation using Composer
 ```bash
 $ composer require patrickschur/language-detection
 ```
 > **Note:** This library requires the [Multibyte String](http://php.net/manual/en/book.mbstring.php) extension in order to work. 
 
-Basic Usage
--
-
+## Basic Usage
 If you have added your own files, you must first generate a language profile. 
 Otherwise skip this step.
  
@@ -38,71 +49,176 @@ use LanguageDetection\Language;
 $ld = new Language;
  
 $ld->detect('Mag het een onsje meer zijn?')->close();
-/*
-    [
-        "nl" => 0.65733333333333,
-        "af" => 0.50994444444444,
-        "br" => 0.49177777777778,
-        "nb" => 0.48533333333333,
-        "nn" => 0.48422222222222,
-        "fy" => 0.47361111111111,
-        "dk" => 0.46855555555556,
-        "sv" => 0.46066666666667,
-        "bi" => 0.45722222222222,
-        "de" => 0.45544444444444,
-        ...
-    ]
-*/
- 
-/* provide a whitelist */
-$ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->close();
-/*
-    [
-        "nl" => 0.65733333333333,
-        "af" => 0.50994444444444,
-        "nn" => 0.48422222222222,
-        "de" => 0.45544444444444
-    ]
-*/
- 
-/* provide a blacklist */
-$ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb', 'de')->close();
-/*
-    [
-        "nl" => 0.65733333333333,
-        "af" => 0.50994444444444,
-        "br" => 0.49177777777778,
-        "nn" => 0.48422222222222,
-        "fy" => 0.47361111111111,
-        "sv" => 0.46066666666667,
-        "bi" => 0.45722222222222,
-        ...
-    ]
-*/
- 
-/* specify the number of records to return */
-$ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->close();
-/*
-    [
-        "nl" => 0.65733333333333,
-        "af" => 0.50994444444444,
-        "br" => 0.49177777777778
-    ]
-*/
- 
-$ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(0, 4)->close();
-/*
-    [
-        "nl" => 0.65733333333333,
-        "br" => 0.49177777777778,
-        "nb" => 0.48533333333333,
-        "nn" => 0.48422222222222
-    ]
-*/
+```
+Result:
+```text
+Array
+(
+    "nl" => 0.65733333333333,
+    "af" => 0.50994444444444,
+    "br" => 0.49177777777778,
+    "nb" => 0.48533333333333,
+    "nn" => 0.48422222222222,
+    "fy" => 0.47361111111111,
+    "dk" => 0.46855555555556,
+    "sv" => 0.46066666666667,
+    "bi" => 0.45722222222222,
+    "de" => 0.45544444444444,
+)
 ```
 
-Supported languages:
--
+## whitelist
+Provide a whitelist. Returns a list of languages, which are required.
+```php
+$ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->close();
+```
+Result:
+```text
+Array
+(
+    "nl" => 0.65733333333333,
+    "af" => 0.50994444444444,
+    "nn" => 0.48422222222222,
+    "de" => 0.45544444444444
+)
+```
+
+## blacklist
+Provide a blacklist. Removes the given languages from the result.
+```php
+$ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb', 'de')->close();
+```
+Result:
+```text
+Array
+(
+    "nl" => 0.65733333333333,
+    "af" => 0.50994444444444,
+    "br" => 0.49177777777778,
+    "nn" => 0.48422222222222,
+    "fy" => 0.47361111111111,
+    "sv" => 0.46066666666667,
+    "bi" => 0.45722222222222,
+    [...]
+)
+```
+
+## bestResults
+Returns the best results.
+```php
+$ld->detect('Mag het een onsje meer zijn?')->bestResults()->close();
+```
+Result:
+```text
+Array
+(
+    [nl] => 0.65733333333333
+)
+```
+
+## limit
+You can specify the number of records to return. For example the following code will return the top three entries.
+```php
+$ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->close();
+```
+Result:
+```text
+Array
+(
+    "nl" => 0.65733333333333,
+    "af" => 0.50994444444444,
+    "br" => 0.49177777777778
+)
+```
+
+## close
+Returns the result as an array.
+```php
+$ld->detect('This is an example!')->close();
+```
+Result:
+```text
+Array
+(
+    "en" => 0.58436507936508,
+    "gd" => 0.55325396825397,
+    "ga" => 0.54920634920635,
+    "et" => 0.48,
+    "af" => 0.47920634920635,
+    [...]
+)
+```
+
+## Method chaining
+You can also combine methods with each other.
+This for example will remove all entries specified in the blacklist and returns only the top four entries.
+```php 
+$ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(0, 4)->close();
+```
+Result:
+```text
+Array
+(
+    "nl" => 0.65733333333333,
+    "br" => 0.49177777777778,
+    "nb" => 0.48533333333333,
+    "nn" => 0.48422222222222
+)
+```
+
+## JsonSerializable
+Serialized the data to JSON.
+```php
+$object = $ld->detect('Tere tulemast tagasi! Nägemist!');
+ 
+json_encode($object, JSON_PRETTY_PRINT);
+```
+Result:
+```text
+{
+    "et": 0.512258064516129,
+    "ch": 0.44596774193548383,
+    "bi": 0.43000000000000005,
+    "fi": 0.4298924731182796,
+    "lt": 0.42774193548387096,
+    [...]
+}
+```
+
+## IteratorAggregate
+It's also possible to iterate over the result.
+```php
+foreach ($l->detect('मुझे हिंदी नहीं आती') as $lang => $score) {
+    // [...]
+}
+```
+
+## ArrayAccess
+```php
+$sentence = 'Das ist ein Test';
+ 
+echo $ld->detect($sentence)['de'];
+echo $ld->detect($sentence)['en'];
+echo $ld->detect($sentence)['xy']; // doesn't exists
+```
+Result:
+```text
+0.65598039215686
+0.565
+NULL
+```
+
+## __toString()
+Returns the top entrie of the result.
+```php
+echo $ld->detect('Das ist ein Test.');
+```
+Result:
+```text
+de
+```
+
+## Supported languages
 If your language not supported, feel free to add your own language files.
 
 | Language Code | Language |
