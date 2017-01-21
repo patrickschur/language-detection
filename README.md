@@ -6,7 +6,7 @@
 This library can detect the language of a given text string.
 It can parse given training text in many different idioms into a sequence of [N-grams](https://en.wikipedia.org/wiki/N-gram) and builds a database file in JSON format to be used in the detection phase.
 Then it can take a given text and detect its language using the database previously generated in the training phase.
-The library comes with text samples used for training and detecting text in 105 languages.
+The library comes with text samples used for training and detecting text in 106 languages.
 
 ## Table of Contents
 - [Installation using Composer](#installation-using-composer)
@@ -20,7 +20,8 @@ The library comes with text samples used for training and detecting text in 105 
 - [JsonSerializable](#jsonserializable)
 - [IteratorAggregate](#iteratoraggregate)
 - [ArrayAccess](#arrayaccess)
-- [__toString()](#__tostring)
+- [\_\_toString()](#__tostring)
+- [List of supported languages](#supported-languages)
 
 ## Installation using Composer
 ```bash
@@ -31,7 +32,7 @@ $ composer require patrickschur/language-detection
 ## Basic Usage
 If you have added your own files, you must first generate a language profile. 
 Otherwise skip this step.
- 
+
 ```php
 use LanguageDetection\Trainer;
  
@@ -149,7 +150,7 @@ Array
 )
 ```
 
-## Method chaining
+## Method Chaining
 You can also combine methods with each other.
 This for example will remove all entries specified in the blacklist and returns only the top four entries.
 ```php 
@@ -296,6 +297,7 @@ If your language not supported, feel free to add your own language files.
 | ms-Latn | Malay (Latin) |
 | mt | Maltese |
 | nb | Norwegian, Nynorsk |
+| ng | Ndonga |
 | nl | Dutch |
 | nn | Norwegian, Bokmål |
 | nv | Navajo |
