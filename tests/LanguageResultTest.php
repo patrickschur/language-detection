@@ -105,7 +105,7 @@ class LanguageResultTest extends \PHPUnit_Framework_TestCase
     {
         $l = new Language;
 
-        $result = $l->detect('Example')->close();
+        $result = $l->detect('Example');
 
         $this->assertTrue(empty($result['NaN']));
         $result['NaN'] = 0;
