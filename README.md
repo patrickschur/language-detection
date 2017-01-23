@@ -1,7 +1,7 @@
 # language-detection
 | Build Status | Code Coverage | Version | Total Downloads | Maintenance | Minimum PHP Version | License |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [![Build Status](https://travis-ci.org/patrickschur/language-detection.svg?branch=master)](https://travis-ci.org/patrickschur/language-detection) | [![codecov](https://codecov.io/gh/patrickschur/language-detection/branch/master/graph/badge.svg)](https://codecov.io/gh/patrickschur/language-detection) | [![Version](https://img.shields.io/packagist/v/patrickschur/language-detection.svg?style=flat-square)](https://packagist.org/packages/patrickschur/language-detection) | [![Total Downloads](https://img.shields.io/packagist/dt/patrickschur/language-detection.svg?style=flat-square)](https://packagist.org/packages/patrickschur/language-detection) | [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?style=flat-square)](https://github.com/patrickschur/language-detection) | [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.0-FF.svg?style=flat-square)](http://php.net/) | [![License](https://img.shields.io/packagist/l/patrickschur/language-detection.svg?style=flat-square)](https://opensource.org/licenses/MIT) |
+| [![Build Status](https://travis-ci.org/patrickschur/language-detection.svg?branch=master)](https://travis-ci.org/patrickschur/language-detection) | [![codecov](https://codecov.io/gh/patrickschur/language-detection/branch/master/graph/badge.svg)](https://codecov.io/gh/patrickschur/language-detection) | [![Version](https://img.shields.io/packagist/v/patrickschur/language-detection.svg?style=flat-square)](https://packagist.org/packages/patrickschur/language-detection) | [![Total Downloads](https://img.shields.io/packagist/dt/patrickschur/language-detection.svg?style=flat-square)](https://packagist.org/packages/patrickschur/language-detection) | [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?style=flat-square)](https://github.com/patrickschur/language-detection) | [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.0-4AC51C.svg?style=flat-square)](http://php.net/) | [![License](https://img.shields.io/packagist/l/patrickschur/language-detection.svg?style=flat-square)](https://opensource.org/licenses/MIT) |
 
 This library can detect the language of a given text string.
 It can parse given training text in many different idioms into a sequence of [N-grams](https://en.wikipedia.org/wiki/N-gram) and builds a database file in JSON format to be used in the detection phase.
@@ -16,11 +16,11 @@ The library comes with text samples used for training and detecting text in 106 
 - [bestResults()](#bestresults)
 - [limit()](#limit)
 - [close()](#close)
+- [\_\_toString()](#__tostring)
 - [Method Chaining](#method-chaining)
 - [JsonSerializable](#jsonserializable)
 - [IteratorAggregate](#iteratoraggregate)
 - [ArrayAccess](#arrayaccess)
-- [\_\_toString()](#__tostring)
 - [List of supported languages](#supported-languages)
 
 ## Installation using Composer
@@ -150,6 +150,16 @@ Array
 )
 ```
 
+## __toString()
+Returns the top entrie of the result.
+```php
+echo $ld->detect('Das ist ein Test.');
+```
+Result:
+```text
+de
+```
+
 ## Method Chaining
 You can also combine methods with each other.
 This for example will remove all entries specified in the blacklist and returns only the top four entries.
@@ -207,16 +217,6 @@ Result:
 0.65598039215686
 0.565
 NULL
-```
-
-## __toString()
-Returns the top entrie of the result.
-```php
-echo $ld->detect('Das ist ein Test.');
-```
-Result:
-```text
-de
 ```
 
 ## Supported languages
