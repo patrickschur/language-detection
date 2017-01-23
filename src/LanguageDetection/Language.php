@@ -15,26 +15,20 @@ class Language extends NgramParser
     /**
      * @var array
      */
-    private static $tokens = [];
-
-    /**
-     * @var bool
-     */
-    private static $exists = false;
+    private $tokens = [];
 
     public function __construct(array $lang = [])
     {
         $filename = __DIR__ . '/../../etc/_langs.json';
 
-        if (false === self::$exists && file_exists($filename))
+        if (file_exists($filename))
         {
-            self::$exists = true;
-            self::$tokens = json_decode(file_get_contents($filename), true);
+            $this->tokens = json_decode(file_get_contents($filename), true);
         }
 
         if (!empty($lang))
         {
-            self::$tokens = array_intersect_key(self::$tokens, array_flip($lang));
+            $this->tokens = array_intersect_key($this->tokens, array_flip($lang));
         }
     }
 
@@ -50,7 +44,7 @@ class Language extends NgramParser
 
         $result = [];
 
-        foreach (self::$tokens as $lang => $value)
+        foreach ($this->tokens as $lang => $value)
         {
             $index = $sum = 0;
 
