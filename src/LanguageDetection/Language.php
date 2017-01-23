@@ -22,7 +22,7 @@ class Language extends NgramParser
      */
     private static $exists = false;
 
-    public function __construct()
+    public function __construct(array $lang = [])
     {
         $filename = __DIR__ . '/../../etc/_langs.json';
 
@@ -30,6 +30,11 @@ class Language extends NgramParser
         {
             self::$exists = true;
             self::$tokens = json_decode(file_get_contents($filename), true);
+        }
+
+        if (!empty($lang))
+        {
+            self::$tokens = array_intersect_key(self::$tokens, array_flip($lang));
         }
     }
 

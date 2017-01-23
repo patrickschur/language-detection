@@ -26,6 +26,19 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function testConstructor()
+    {
+        $l = new Language(['de', 'en', 'nl']);
+
+        $array = $l->detect('Das ist ein Test')->close();
+
+        $this->assertEquals(3, count($array));
+
+        $this->assertArrayHasKey('de', $array);
+        $this->assertArrayHasKey('en', $array);
+        $this->assertArrayHasKey('nl', $array);
+    }
+
     /**
      * @param $expected
      * @param $sample

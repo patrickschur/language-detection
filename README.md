@@ -11,6 +11,7 @@ The library comes with text samples used for training and detecting text in 106 
 ## Table of Contents
 - [Installation using Composer](#installation-using-composer)
 - [Basic Usage](#basic-usage)
+- [\_\_construct()](#__construct)
 - [whitelist()](#whitelist)
 - [blacklist()](#blacklist)
 - [bestResults()](#bestresults)
@@ -65,10 +66,20 @@ Array
     "sv" => 0.46066666666667,
     "bi" => 0.45722222222222,
     "de" => 0.45544444444444,
+    [...]
 )
 ```
 
-## whitelist
+## __construct()
+You can pass an array of languages to the constructor. To compare the desired sentence only with the given languages.
+This can dramatically increase the performance up to three times faster is possible, than without specifying languages.
+```php
+$ld = new Language(['de', 'en', 'nl']);
+ 
+$ld->detect('Das ist ein Test'); // compares the sentence only with de, en and nl.
+```
+
+## whitelist()
 Provide a whitelist. Returns a list of languages, which are required.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->close();
@@ -84,7 +95,7 @@ Array
 )
 ```
 
-## blacklist
+## blacklist()
 Provide a blacklist. Removes the given languages from the result.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb', 'de')->close();
@@ -104,7 +115,7 @@ Array
 )
 ```
 
-## bestResults
+## bestResults()
 Returns the best results.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->bestResults()->close();
@@ -117,7 +128,7 @@ Array
 )
 ```
 
-## limit
+## limit()
 You can specify the number of records to return. For example the following code will return the top three entries.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->close();
@@ -132,7 +143,7 @@ Array
 )
 ```
 
-## close
+## close()
 Returns the result as an array.
 ```php
 $ld->detect('This is an example!')->close();
@@ -151,7 +162,7 @@ Array
 ```
 
 ## __toString()
-Returns the top entrie of the result.
+Returns the top entrie of the result. Note the `echo` at the beginning.
 ```php
 echo $ld->detect('Das ist ein Test.');
 ```
@@ -162,7 +173,7 @@ de
 
 ## Method Chaining
 You can also combine methods with each other.
-This for example will remove all entries specified in the blacklist and returns only the top four entries.
+The following example will remove all entries specified in the blacklist and returns only the top four entries.
 ```php 
 $ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(0, 4)->close();
 ```
@@ -199,12 +210,13 @@ Result:
 ## IteratorAggregate
 It's also possible to iterate over the result.
 ```php
-foreach ($l->detect('मुझे हिंदी नहीं आती') as $lang => $score) {
+foreach ($ld->detect('मुझे हिंदी नहीं आती') as $lang => $score) {
     // [...]
 }
 ```
 
 ## ArrayAccess
+You can also access the object directly as an array.
 ```php
 $sentence = 'Das ist ein Test';
  
