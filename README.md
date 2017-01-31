@@ -9,7 +9,7 @@ Then it can take a given text and detect its language using the database previou
 The library comes with text samples used for training and detecting text in 106 languages.
 
 ## Table of Contents
-- [Installation using Composer](#installation-using-composer)
+- [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [\_\_construct()](#__construct)
 - [whitelist()](#whitelist)
@@ -24,11 +24,18 @@ The library comes with text samples used for training and detecting text in 106 
 - [ArrayAccess](#arrayaccess)
 - [List of supported languages](#supported-languages)
 
-## Installation using Composer
+## Installation
+> **Note:** This library requires the [Multibyte String](http://php.net/manual/en/book.mbstring.php) extension in order to work.
+
+#### Installation using Composer
 ```bash
 $ composer require patrickschur/language-detection
+``` 
+
+#### Installation without Composer
+```php
+require __DIR__ . '/src/LanguageDetection/autoload.php';
 ```
-> **Note:** This library requires the [Multibyte String](http://php.net/manual/en/book.mbstring.php) extension in order to work. 
 
 ## Basic Usage
 If you have added your own files, you must first generate a language profile. 
