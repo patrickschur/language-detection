@@ -58,7 +58,7 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
     {
         return [
             ['de', 'Ich wünsche dir noch einen schönen Tag'],
-            ['jp', '最近どうですか。'],
+            ['ja', '最近どうですか。'],
             ['en', 'This sentences should be too small to be recognized.'],
             ['nl', 'Mag het een onsje meer zijn? '],
             ['hi', 'मुझे हिंदी नहीं आती'],

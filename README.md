@@ -298,7 +298,7 @@ If your language not supported, feel free to add your own language files.
 | is | Icelandic |
 | it | Italian |
 | iu | Inuktitut |
-| jp | Japanese |
+| ja | Japanese |
 | jv | Javanese |
 | ka | Georgian |
 | km | Khmer |
@@ -315,10 +315,10 @@ If your language not supported, feel free to add your own language files.
 | ms-Arab | Malay (Arabic) |
 | ms-Latn | Malay (Latin) |
 | mt | Maltese |
-| nb | Norwegian, Nynorsk |
+| nb | Norwegian, Bokmål |
 | ng | Ndonga |
 | nl | Dutch |
-| nn | Norwegian, Bokmål |
+| nn | Norwegian, Nynorsk |
 | nv | Navajo |
 | pl | Polish |
 | pt-BR | Portuguese (Brazil) |

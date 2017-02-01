@@ -124,7 +124,7 @@ class LanguageResultTest extends \PHPUnit_Framework_TestCase
     {
         return [
             ['de', 'Das ist ein Test.'],
-            ['jp', '最近どうですか。'],
+            ['ja', '最近どうですか。'],
             ['hu', 'Nem beszélek magyarul?'],
             ['es', '¡Buenos días! ¡Hasta la vista!'],
             ['hi', 'मुझे हिंदी नहीं आती'],
