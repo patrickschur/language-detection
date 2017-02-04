@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace LanguageDetection\Tests;
 
 use LanguageDetection\Language;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class LanguageTest
@@ -12,7 +13,7 @@ use LanguageDetection\Language;
  * @author Patrick Schur <patrick_schur@outlook.de>
  * @package LanguageDetection\Tests
  */
-class LanguageTest extends \PHPUnit_Framework_TestCase
+class LanguageTest extends TestCase
 {
     public function testAll()
     {
