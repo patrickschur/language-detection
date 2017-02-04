@@ -7,6 +7,8 @@ namespace LanguageDetection;
 /**
  * Class LanguageResult
  *
+ * @copyright 2016-2017 Patrick Schur
+ * @license https://opensource.org/licenses/mit-license.html MIT
  * @author Patrick Schur <patrick_schur@outlook.de>
  * @package LanguageDetection
  */
@@ -117,7 +119,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
     {
         $first = array_values($this->result)[0];
 
-        return new LanguageResult(array_filter($this->result, function ($value) use (&$first) {
+        return new LanguageResult(array_filter($this->result, function ($value) use ($first) {
             return ($first - $value) <= self::THRESHOLD ? true : false;
         }));
     }

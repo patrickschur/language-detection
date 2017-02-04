@@ -9,7 +9,7 @@ Then it can take a given text and detect its language using the database previou
 The library comes with text samples used for training and detecting text in 106 languages.
 
 ## Table of Contents
-- [Installation](#installation-with-composer)
+- [Installation with Composer](#installation-with-composer)
 - [Basic Usage](#basic-usage)
 - [\_\_construct()](#__construct)
 - [whitelist()](#whitelist)
@@ -23,29 +23,16 @@ The library comes with text samples used for training and detecting text in 106 
 - [IteratorAggregate](#iteratoraggregate)
 - [ArrayAccess](#arrayaccess)
 - [List of supported languages](#supported-languages)
+- [Other languages](#other-languages)
 
 ## Installation with Composer
-> **Note:** This library requires the [Multibyte String](http://php.net/manual/en/book.mbstring.php) extension in order to work.
-
+> **Note:** This library requires the [Multibyte String](http://php.net/manual/en/book.mbstring.php) extension in order to work. 
 ```bash
 $ composer require patrickschur/language-detection
-``` 
+```
 
 ## Basic Usage
-If you have added your own files, you must first generate a language profile. 
-Otherwise skip this step.
-
-```php
-use LanguageDetection\Trainer;
- 
-$t = new Trainer();
- 
-$t->learn();
-```
- 
-Now, we can classify texts by their language.
 To detect the language correctly, the length of the input text should be at least some sentences.
- 
 ```php
 use LanguageDetection\Language;
  
@@ -57,27 +44,28 @@ Result:
 ```text
 Array
 (
-    "nl" => 0.65733333333333,
-    "af" => 0.50994444444444,
-    "br" => 0.49177777777778,
-    "nb" => 0.48533333333333,
-    "nn" => 0.48422222222222,
-    "fy" => 0.47361111111111,
-    "dk" => 0.46855555555556,
-    "sv" => 0.46066666666667,
-    "bi" => 0.45722222222222,
-    "de" => 0.45544444444444,
+    "nl" => 0.66193548387097,
+    "af" => 0.51338709677419,
+    "br" => 0.49634408602151,
+    "nb" => 0.48849462365591,
+    "nn" => 0.48741935483871,
+    "fy" => 0.47822580645161,
+    "dk" => 0.47172043010753,
+    "sv" => 0.46408602150538,
+    "bi" => 0.46021505376344,
+    "de" => 0.45903225806452,
     [...]
 )
 ```
 
 ## __construct()
 You can pass an array of languages to the constructor. To compare the desired sentence only with the given languages.
-This can dramatically increase the performance up to three times faster is possible, than without specifying languages.
+This can dramatically increase the performance.
 ```php
 $ld = new Language(['de', 'en', 'nl']);
  
-$ld->detect('Das ist ein Test'); // compares the sentence only with de, en and nl.
+// Compares the sentence only with "de", "en" and "nl" language models.
+$ld->detect('Das ist ein Test');
 ```
 
 ## whitelist()
@@ -89,10 +77,10 @@ Result:
 ```text
 Array
 (
-    "nl" => 0.65733333333333,
-    "af" => 0.50994444444444,
-    "nn" => 0.48422222222222,
-    "de" => 0.45544444444444
+    "nl" => 0.66193548387097,
+    "af" => 0.51338709677419,
+    "nn" => 0.48741935483871,
+    "de" => 0.45903225806452
 )
 ```
 
@@ -105,13 +93,13 @@ Result:
 ```text
 Array
 (
-    "nl" => 0.65733333333333,
-    "af" => 0.50994444444444,
-    "br" => 0.49177777777778,
-    "nn" => 0.48422222222222,
-    "fy" => 0.47361111111111,
-    "sv" => 0.46066666666667,
-    "bi" => 0.45722222222222,
+    "nl" => 0.66193548387097,
+    "af" => 0.51338709677419,
+    "br" => 0.49634408602151,
+    "nn" => 0.48741935483871,
+    "fy" => 0.47822580645161,
+    "sv" => 0.46408602150538,
+    "bi" => 0.46021505376344,
     [...]
 )
 ```
@@ -125,7 +113,7 @@ Result:
 ```text
 Array
 (
-    [nl] => 0.65733333333333
+    "nl" => 0.66193548387097
 )
 ```
 
@@ -138,9 +126,9 @@ Result:
 ```text
 Array
 (
-    "nl" => 0.65733333333333,
-    "af" => 0.50994444444444,
-    "br" => 0.49177777777778
+    "nl" => 0.66193548387097,
+    "af" => 0.51338709677419,
+    "br" => 0.49634408602151
 )
 ```
 
@@ -153,11 +141,11 @@ Result:
 ```text
 Array
 (
-    "en" => 0.58436507936508,
-    "gd" => 0.55325396825397,
-    "ga" => 0.54920634920635,
-    "et" => 0.48,
-    "af" => 0.47920634920635,
+    "en" => 0.5889400921659,
+    "gd" => 0.55691244239631,
+    "ga" => 0.55376344086022,
+    "et" => 0.48294930875576,
+    "af" => 0.48218125960061,
     [...]
 )
 ```
@@ -182,10 +170,10 @@ Result:
 ```text
 Array
 (
-    "nl" => 0.65733333333333,
-    "br" => 0.49177777777778,
-    "nb" => 0.48533333333333,
-    "nn" => 0.48422222222222
+    "nl" => 0.66193548387097
+    "br" => 0.49634408602151
+    "nb" => 0.48849462365591
+    "nn" => 0.48741935483871
 )
 ```
 
@@ -199,11 +187,11 @@ json_encode($object, JSON_PRETTY_PRINT);
 Result:
 ```text
 {
-    "et": 0.512258064516129,
-    "ch": 0.44596774193548383,
-    "bi": 0.43000000000000005,
-    "fi": 0.4298924731182796,
-    "lt": 0.42774193548387096,
+    "et": 0.5224748810153358,
+    "ch": 0.45817028027498674,
+    "bi": 0.4452670544685352,
+    "fi": 0.440983606557377,
+    "lt": 0.4382866208355367,
     [...]
 }
 ```
@@ -219,127 +207,99 @@ foreach ($ld->detect('मुझे हिंदी नहीं आती') as $
 ## ArrayAccess
 You can also access the object directly as an array.
 ```php
-$sentence = 'Das ist ein Test';
+$object = $ld->detect(Das ist ein Test');
  
-echo $ld->detect($sentence)['de'];
-echo $ld->detect($sentence)['en'];
-echo $ld->detect($sentence)['xy']; // doesn't exists
+echo $object['de'];
+echo $object['en'];
+echo $object['xy']; // does not exists
 ```
 Result:
 ```text
-0.65598039215686
-0.565
+0.6623339658444
+0.56859582542694
 NULL
 ```
 
 ## Supported languages
-If your language not supported, feel free to add your own language files.
+The library currently supports 106 languages.
 
-| Language Code | Language |
-| :---: | :---: |
-| ab | Abkhaz |
-| af | Afrikaans |
-| am | Amharic |
-| ar | Arabic |
-| ay | Aymara |
-| az-Cyrl | Azerbaijani, North (Cyrillic) |
-| az-Latn | Azerbaijani, North (Latin) |
-| be | Belarusan |
-| bg | Bulgarian |
-| bi | Bislama |
-| bn | Bengali |
-| bo | Tibetan |
-| br | Breton |
-| bs-Cyrl | Bosnian (Cyrillic) |
-| bs-Latn | Bosnian (Latin) |
-| ca | Catalan |
-| ch | Chamorro |
-| co | Corsican |
-| cr | Cree |
-| cs | Czech |
-| cy | Welsh |
-| de | German |
-| dk | Danish |
-| dz | Dzongkha |
-| el-monoton | Greek (monotonic) |
-| el-polyton | Greek (polytonic) |
-| en | English |
-| eo | Esperanto |
-| es | Spanish |
-| et | Estonian |
-| eu | Basque |
-| fa | Persian |
-| fi | Finnish |
-| fj | Fijian |
-| fo | Faroese |
-| fr | French |
-| fy | Frisian |
-| ga | Gaelic, Irish |
-| gd | Gaelic, Scottish |
-| gl | Galician |
-| gn | Guarani |
-| gu | Gujarati |
-| ha | Hausa |
-| he | Hebrew |
-| hi | Hindi |
-| hr | Croatian |
-| hu | Hungarian |
-| hy | Armenian |
-| ia | Interlingua |
-| id | Indonesian |
-| ig | Igbo |
-| io | Ido |
-| is | Icelandic |
-| it | Italian |
-| iu | Inuktitut |
-| ja | Japanese |
-| jv | Javanese |
-| ka | Georgian |
-| km | Khmer |
-| ko | Korean |
-| kr | Kanuri |
-| ku | Kurdish |
-| la | Latin |
-| lg | Ganda |
-| lo | Lao |
-| lt | Lithuanian |
-| lv | Latvian |
-| mh | Marshallese |
-| mn-Cyrl | Mongolian, Halh (Cyrillic) |
-| ms-Arab | Malay (Arabic) |
-| ms-Latn | Malay (Latin) |
-| mt | Maltese |
-| nb | Norwegian, Bokmål |
-| ng | Ndonga |
-| nl | Dutch |
-| nn | Norwegian, Nynorsk |
-| nv | Navajo |
-| pl | Polish |
-| pt-BR | Portuguese (Brazil) |
-| pt-PT | Portuguese (Portugal) |
-| ro | Romanian |
-| ru | Russian |
-| sk | Slovak |
-| sl | Slovene |
-| so | Somali |
-| sq | Albanian |
-| ss | Swati |
-| sv | Swedish |
-| ta | Tamil |
-| th | Thai |
-| tl | Tagalog |
-| tr | Turkish |
-| tt | Tatar |
-| ty | Tahitian |
-| ug-Arab | Uyghur (Arabic) |
-| ug-Latn | Uyghur (Latin) |
-| uk | Ukrainian |
-| uz | Uzbek |
-| ve | Venda |
-| vi | Vietnamese |
-| wa | Walloon |
-| wo | Wolof |
-| xh | Xhosa |
-| yo | Yoruba |
-| zh-Hans | Chinese, Mandarin (Simplified) |
-| zh-Hant | Chinese, Mandarin (Traditional) |
+| Language | Language Code | Language | Language Code |
+| :--- | :--- | :--- | :--- |
+| Abkhaz | ab | Italian | it |
+| Afrikaans | af | Inuktitut | iu |
+| Amharic | am | Japanese | ja |
+| Arabic | ar | Javanese | jv |
+| Aymara | ay | Georgian | ka |
+| Azerbaijani, North (Cyrillic) | az-Cyrl | Khmer | km |
+| Azerbaijani, North (Latin) | az-Latn | Korean | ko |
+| Belarusan | be | Kanuri | kr |
+| Bulgarian | bg | Kurdish | ku |
+| Bislama | bi | Latin | la |
+| Bengali | bn | Ganda | lg |
+| Tibetan | bo | Lao | lo |
+| Breton | br | Lithuanian | lt |
+| Bosnian (Cyrillic) | bs-Cyrl | Latvian | lv |
+| Bosnian (Latin) | bs-Latn | Marshallese | mh |
+| Catalan | ca | Mongolian, Halh (Cyrillic) | mn-Cyrl |
+| Chamorro | ch | Malay (Arabic) | ms-Arab |
+| Corsican | co | Malay (Latin) | ms-Latn |
+| Cree | cr | Maltese | mt |
+| Czech | cs | Norwegian, Bokmål | nb |
+| Welsh | cy | Ndonga | ng |
+| German | de | Dutch | nl |
+| Danish | dk | Norwegian, Nynorsk | nn |
+| Dzongkha | dz | Navajo | nv |
+| Greek (monotonic) | el-monoton | Polish | pl |
+| Greek (polytonic) | el-polyton | Portuguese (Brazil) | pt-BR |
+| English | en | Portuguese (Portugal) | pt-PT |
+| Esperanto | eo | Romanian | ro |
+| Spanish | es | Russian | ru |
+| Estonian | et | Slovak | sk |
+| Basque | eu | Slovene | sl |
+| Persian | fa | Somali | so |
+| Finnish | fi | Albanian | sq |
+| Fijian | fj | Swati | ss |
+| Faroese | fo | Swedish | sv |
+| French | fr | Tamil | ta |
+| Frisian | fy | Thai | th |
+| Gaelic, Irish | ga | Tagalog | tl |
+| Gaelic, Scottish | gd | Turkish | tr |
+| Galician | gl | Tatar | tt |
+| Guarani | gn | Tahitian | ty |
+| Gujarati | gu | Uyghur (Arabic) | ug-Arab |
+| Hausa | ha | Uyghur (Latin) | ug-Latn |
+| Hebrew | he | Ukrainian | uk |
+| Hindi | hi | Uzbek | uz |
+| Croatian | hr | Venda | ve |
+| Hungarian | hu | Vietnamese | vi |
+| Armenian | hy | Walloon | wa |
+| Interlingua | ia | Wolof | wo |
+| Indonesian | id | Xhosa | xh |
+| Igbo | ig | Yoruba | yo |
+| Ido | io | Chinese, Mandarin (Simplified) | zh-Hans |
+| Icelandic | is | Chinese, Mandarin (Traditional) | zh-Hant |
+
+## Other languages
+**The library is trainable which means you can change, remove and add your own language files to it.**
+If your language not supported, feel free to add your own language files.
+To do that, create a new directory in `resources` and add your training text to it.
+> **Note:** The training text should be a **.txt** file.
+
+#### Example
+```text
+|- resources
+    |- ham
+        |- ham.txt
+    |- spam
+        |- spam.txt
+```
+**As you can see, we can also detect spam with it.**
+If you have added your own files, you must first generate a language profile for it.
+```php
+use LanguageDetection\Trainer;
+ 
+$t = new Trainer();
+ 
+$t->learn();
+```
+Now we can classify texts by their language with our own training text.
