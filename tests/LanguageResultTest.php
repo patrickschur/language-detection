@@ -18,7 +18,7 @@ class LanguageResultTest extends \PHPUnit_Framework_TestCase
     {
         $l = new Language();
 
-        $count = (new \GlobIterator(__DIR__ . '/../etc/[^_]*'))->count();
+        $count = (new \GlobIterator(__DIR__ . '/../resources/*/*.json'))->count();
 
         $sample = $l->detect('Example');
 

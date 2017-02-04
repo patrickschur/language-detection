@@ -14,18 +14,20 @@ class Trainer extends NgramParser
 {
     public function learn()
     {
-        $tokens = [];
-
-        foreach (new \GlobIterator(__DIR__ . '/../../etc/[^_]*') as $file)
+        /** @var \GlobIterator $txt */
+        foreach (new \GlobIterator(__DIR__ . '/../../resources/*/*.txt') as $txt)
         {
-            $content = file_get_contents($file->getPathname());
-            $content = mb_strtolower($content);
+            $content = mb_strtolower(file_get_contents($txt->getPathname()));
 
-            echo $file->getBasename(), PHP_EOL;
+            echo $txt->getBasename('.txt'), PHP_EOL;
 
-            $tokens[$file->getBasename()] = $this->getNgrams($content);
+            file_put_contents(
+                substr_replace($txt->getPathname(), 'json', -3),
+                json_encode(
+                    [ $txt->getBasename('.txt') => $this->getNgrams($content) ],
+                    JSON_UNESCAPED_UNICODE
+                )
+            );
         }
-
-        file_put_contents(__DIR__ . '/../../etc/_langs.json', json_encode($tokens, JSON_UNESCAPED_UNICODE));
     }
 }

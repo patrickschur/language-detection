@@ -18,11 +18,11 @@ class LanguageTest extends \PHPUnit_Framework_TestCase
     {
         $l = new Language();
 
-        foreach (new \GlobIterator(__DIR__ . '/../etc/[^_]*') as $file)
+        foreach (new \GlobIterator(__DIR__ . '/../resources/*/*.txt') as $txt)
         {
-            $content = file_get_contents($file->getPathname());
+            $content = file_get_contents($txt->getPathname());
 
-            $this->assertEquals(key($l->detect($content)->close()), $file->getBasename());
+            $this->assertEquals(key($l->detect($content)->close()), $txt->getBasename('.txt'));
         }
     }
 

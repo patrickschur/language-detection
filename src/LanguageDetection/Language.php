@@ -19,16 +19,15 @@ class Language extends NgramParser
 
     public function __construct(array $lang = [])
     {
-        $filename = __DIR__ . '/../../etc/_langs.json';
+        $isEmpty = empty($lang);
 
-        if (file_exists($filename))
+        /** @var \GlobIterator $json */
+        foreach (new \GlobIterator(__DIR__ . '/../../resources/*/*.json') as $json)
         {
-            $this->tokens = json_decode(file_get_contents($filename), true);
-        }
-
-        if (!empty($lang))
-        {
-            $this->tokens = array_intersect_key($this->tokens, array_flip($lang));
+            if ($isEmpty || in_array($json->getBasename('.json'), $lang))
+            {
+                $this->tokens += json_decode(file_get_contents($json->getPathname()), true);
+            }
         }
     }
 
