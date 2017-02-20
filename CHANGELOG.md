@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file.
 - Renamed all language files (added **.txt** extension)
 - Improved performance
 - Updated to PHPUnit 6
-- `README.md`
+- `README.md`, thanks to [stof](https://github.com/stof)
 
 ### Removed
 - Autoloader script
@@ -23,7 +23,7 @@ All notable changes to this project will be documented in this file.
 - Autloader script
 
 ### Changed
-- Fixed typos for Lithuanian language sample
+- Fixed typos for Lithuanian language sample, thanks to [tomasliubinas](https://github.com/tomasliubinas)
 - Fixed wrong ISO 639-1 codes
 - Updated `_langs.json`
 

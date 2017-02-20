@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace LanguageDetection\Tests;
 
 use LanguageDetection\Language;
+use LanguageDetection\Tokenizer\TokenizerInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -40,6 +41,23 @@ class LanguageTest extends TestCase
         $this->assertArrayHasKey('de', $array);
         $this->assertArrayHasKey('en', $array);
         $this->assertArrayHasKey('nl', $array);
+    }
+
+    public function testTokenizer()
+    {
+        $stub = $this->createMock(Language::class);
+
+        $stub->method('setTokenizer')->willReturn('');
+
+        /** @var Language $stub */
+        /** @noinspection PhpVoidFunctionResultUsedInspection */
+        $this->assertEquals('', $stub->setTokenizer(new class implements TokenizerInterface
+        {
+            public function tokenize(string $str): array
+            {
+                return preg_split('//u', $str, -1, PREG_SPLIT_NO_EMPTY);
+            }
+        }));
     }
 
     /**

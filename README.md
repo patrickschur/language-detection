@@ -11,19 +11,14 @@ The library comes with text samples used for training and detecting text in 106 
 ## Table of Contents
 - [Installation with Composer](#installation-with-composer)
 - [Basic Usage](#basic-usage)
-- [\_\_construct()](#__construct)
-- [whitelist()](#whitelist)
-- [blacklist()](#blacklist)
-- [bestResults()](#bestresults)
-- [limit()](#limit)
-- [close()](#close)
-- [\_\_toString()](#__tostring)
+- [API](#api)
 - [Method Chaining](#method-chaining)
-- [JsonSerializable](#jsonserializable)
-- [IteratorAggregate](#iteratoraggregate)
-- [ArrayAccess](#arrayaccess)
+- [Array Access](#arrayaccess)
 - [List of supported languages](#supported-languages)
 - [Other languages](#other-languages)
+- [FAQ](#faq)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Installation with Composer
 > **Note:** This library requires the [Multibyte String](http://php.net/manual/en/book.mbstring.php) extension in order to work. 
@@ -58,7 +53,9 @@ Array
 )
 ```
 
-## __construct()
+## API
+
+### `__construct(array $result = [])`
 You can pass an array of languages to the constructor. To compare the desired sentence only with the given languages.
 This can dramatically increase the performance.
 ```php
@@ -67,8 +64,9 @@ $ld = new Language(['de', 'en', 'nl']);
 // Compares the sentence only with "de", "en" and "nl" language models.
 $ld->detect('Das ist ein Test');
 ```
+<hr style="background-color:#666"/>
 
-## whitelist()
+### `whitelist(string ...$whitelist)`
 Provide a whitelist. Returns a list of languages, which are required.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->close();
@@ -83,8 +81,9 @@ Array
     "de" => 0.45903225806452
 )
 ```
+<hr style="background-color:#666"/>
 
-## blacklist()
+### `blacklist(string ...$blacklist)`
 Provide a blacklist. Removes the given languages from the result.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb', 'de')->close();
@@ -103,8 +102,9 @@ Array
     [...]
 )
 ```
+<hr style="background-color:#666"/>
 
-## bestResults()
+### `bestResults()`
 Returns the best results.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->bestResults()->close();
@@ -116,8 +116,9 @@ Array
     "nl" => 0.66193548387097
 )
 ```
+<hr style="background-color:#666"/>
 
-## limit()
+### `limit(int $offset, int $length = null)`
 You can specify the number of records to return. For example the following code will return the top three entries.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->close();
@@ -131,8 +132,9 @@ Array
     "br" => 0.49634408602151
 )
 ```
+<hr style="background-color:#666"/>
 
-## close()
+### `close()`
 Returns the result as an array.
 ```php
 $ld->detect('This is an example!')->close();
@@ -149,8 +151,24 @@ Array
     [...]
 )
 ```
+<hr style="background-color:#666"/>
 
-## __toString()
+### `setTokenizer(TokenizerInterface $tokenizer)`
+The script use a tokenizer for getting all words in a sentence. 
+You can define your own tokenizer to deal with numbers for example.
+```php
+$ld->setTokenizer(new class implements TokenizerInterface
+{
+    public function tokenize(string $str): array 
+    {
+        return preg_split('/[^a-z0-9]/u', $str, -1, PREG_SPLIT_NO_EMPTY);
+    }
+});
+```
+This will return only characters from the alphabet in lowercase and numbers between 0 and 9.
+<hr style="background-color:#666"/>
+
+### `__toString()`
 Returns the top entrie of the result. Note the `echo` at the beginning.
 ```php
 echo $ld->detect('Das ist ein Test.');
@@ -159,25 +177,9 @@ Result:
 ```text
 de
 ```
+<hr style="background-color:#666"/>
 
-## Method Chaining
-You can also combine methods with each other.
-The following example will remove all entries specified in the blacklist and returns only the top four entries.
-```php 
-$ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(0, 4)->close();
-```
-Result:
-```text
-Array
-(
-    "nl" => 0.66193548387097
-    "br" => 0.49634408602151
-    "nb" => 0.48849462365591
-    "nn" => 0.48741935483871
-)
-```
-
-## JsonSerializable
+### `jsonSerialize()`
 Serialized the data to JSON.
 ```php
 $object = $ld->detect('Tere tulemast tagasi! Nägemist!');
@@ -195,16 +197,27 @@ Result:
     [...]
 }
 ```
+<hr style="background-color:#666"/>
 
-## IteratorAggregate
-It's also possible to iterate over the result.
-```php
-foreach ($ld->detect('मुझे हिंदी नहीं आती') as $lang => $score) {
-    // [...]
-}
+#### Method chaining
+You can also combine methods with each other.
+The following example will remove all entries specified in the blacklist and returns only the top four entries.
+```php 
+$ld->detect('Mag het een onsje meer zijn?')->blacklist('af', 'dk', 'sv')->limit(0, 4)->close();
 ```
+Result:
+```text
+Array
+(
+    "nl" => 0.66193548387097
+    "br" => 0.49634408602151
+    "nb" => 0.48849462365591
+    "nn" => 0.48741935483871
+)
+```
+<hr style="background-color:#666"/>
 
-## ArrayAccess
+#### ArrayAccess
 You can also access the object directly as an array.
 ```php
 $object = $ld->detect(Das ist ein Test');
@@ -219,6 +232,7 @@ Result:
 0.56859582542694
 NULL
 ```
+<hr style="background-color:#666"/>
 
 ## Supported languages
 The library currently supports 106 languages.
@@ -278,9 +292,10 @@ The library currently supports 106 languages.
 | Igbo | ig | Yoruba | yo |
 | Ido | io | Chinese, Mandarin (Simplified) | zh-Hans |
 | Icelandic | is | Chinese, Mandarin (Traditional) | zh-Hant |
+<hr style="background-color:#666"/>
 
 ## Other languages
-**The library is trainable which means you can change, remove and add your own language files to it.**
+The library is trainable which means you can change, remove and add your own language files to it.
 If your language not supported, feel free to add your own language files.
 To do that, create a new directory in `resources` and add your training text to it.
 > **Note:** The training text should be a **.txt** file.
@@ -293,8 +308,9 @@ To do that, create a new directory in `resources` and add your training text to 
     |- spam
         |- spam.txt
 ```
-**As you can see, we can also detect spam with it.**
+As you can see, we can also used it to detect spam or ham.
 If you have added your own files, you must first generate a language profile for it.
+This may take a few seconds.
 ```php
 use LanguageDetection\Trainer;
  
@@ -302,4 +318,52 @@ $t = new Trainer();
  
 $t->learn();
 ```
-Now we can classify texts by their language with our own training text.
+Remove these few lines after execution and now we can classify texts by their language with our own training text.
+<hr style="background-color:#666"/>
+
+## FAQ
+#### How can I improve the detection phase?
+To improve the detection phase you have to use more n-grams. But be careful this will slow down the script.
+I figured out that the detection phase is much better when you are using around 9.000 n-grams (default is 310).
+To do that look at the code right below:
+```php
+$t = new Trainer();
+ 
+$t->setMaxNgrams(9000);
+ 
+$t->learn();
+```
+First you have to train it. 
+Now you can classify texts like before but you must specify how many n-grams you want to use.
+```php
+$ld = new Language();
+ 
+$ld->setMaxNgrams(9000);
+  
+// "grille pain" is french and means "toaster" in english
+var_dump($ld->detect('grille pain')->bestResults());
+```
+Result:
+```text
+class LanguageDetection\LanguageResult#5 (1) {
+  private $result =>
+  array(2) {
+    'fr' =>
+    double(0.91307037037037)
+    'en' =>
+    double(0.90623333333333)
+  }
+}
+```
+#### Is the detection process slower if language files are very big?
+No it is not. The trainer class will only use the best 310 n-grams of the language.
+If you don't change this number or add more language files it will not affect the performance. 
+Only creating the N-grams is slower. However, the creation of N-grams must be done only once.
+The detection phase is only affected when you are trying to detect big chunks of texts.
+> **Summary**: The training phase will be slower but the detection phase remains the same.
+
+## Contributing
+Feel free to contribute. Any help is welcome.
+
+## License
+This projects is licensed under the terms of the MIT license.

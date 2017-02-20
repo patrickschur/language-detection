@@ -1,6 +1,7 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue or email with the owner of this repository before making a change.
+:tada: Thanks for being awesome. :tada:
+Feel free to contribute. Any help is welcome.
 
 ## License
 
