@@ -22,6 +22,7 @@ The library comes with text samples used for training and detecting text in 106 
 
 ## Installation with Composer
 > **Note:** This library requires the [Multibyte String](http://php.net/manual/en/book.mbstring.php) extension in order to work. 
+
 ```bash
 $ composer require patrickschur/language-detection
 ```
