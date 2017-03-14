@@ -56,7 +56,7 @@ Array
 
 ## API
 
-### `__construct(array $result = [])`
+#### `__construct(array $result = [])`
 You can pass an array of languages to the constructor. To compare the desired sentence only with the given languages.
 This can dramatically increase the performance.
 ```php
@@ -67,7 +67,7 @@ $ld->detect('Das ist ein Test');
 ```
 <hr style="background-color:#666"/>
 
-### `whitelist(string ...$whitelist)`
+#### `whitelist(string ...$whitelist)`
 Provide a whitelist. Returns a list of languages, which are required.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->whitelist('de', 'nn', 'nl', 'af')->close();
@@ -84,7 +84,7 @@ Array
 ```
 <hr style="background-color:#666"/>
 
-### `blacklist(string ...$blacklist)`
+#### `blacklist(string ...$blacklist)`
 Provide a blacklist. Removes the given languages from the result.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->blacklist('dk', 'nb', 'de')->close();
@@ -105,7 +105,7 @@ Array
 ```
 <hr style="background-color:#666"/>
 
-### `bestResults()`
+#### `bestResults()`
 Returns the best results.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->bestResults()->close();
@@ -119,7 +119,7 @@ Array
 ```
 <hr style="background-color:#666"/>
 
-### `limit(int $offset, int $length = null)`
+#### `limit(int $offset, int $length = null)`
 You can specify the number of records to return. For example the following code will return the top three entries.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->close();
@@ -135,7 +135,7 @@ Array
 ```
 <hr style="background-color:#666"/>
 
-### `close()`
+#### `close()`
 Returns the result as an array.
 ```php
 $ld->detect('This is an example!')->close();
@@ -154,7 +154,7 @@ Array
 ```
 <hr style="background-color:#666"/>
 
-### `setTokenizer(TokenizerInterface $tokenizer)`
+#### `setTokenizer(TokenizerInterface $tokenizer)`
 The script use a tokenizer for getting all words in a sentence. 
 You can define your own tokenizer to deal with numbers for example.
 ```php
@@ -169,7 +169,7 @@ $ld->setTokenizer(new class implements TokenizerInterface
 This will return only characters from the alphabet in lowercase and numbers between 0 and 9.
 <hr style="background-color:#666"/>
 
-### `__toString()`
+#### `__toString()`
 Returns the top entrie of the result. Note the `echo` at the beginning.
 ```php
 echo $ld->detect('Das ist ein Test.');
@@ -180,7 +180,7 @@ de
 ```
 <hr style="background-color:#666"/>
 
-### `jsonSerialize()`
+#### `jsonSerialize()`
 Serialized the data to JSON.
 ```php
 $object = $ld->detect('Tere tulemast tagasi! Nägemist!');
@@ -200,7 +200,7 @@ Result:
 ```
 <hr style="background-color:#666"/>
 
-#### Method chaining
+## Method chaining
 You can also combine methods with each other.
 The following example will remove all entries specified in the blacklist and returns only the top four entries.
 ```php 
@@ -218,7 +218,7 @@ Array
 ```
 <hr style="background-color:#666"/>
 
-#### ArrayAccess
+## ArrayAccess
 You can also access the object directly as an array.
 ```php
 $object = $ld->detect(Das ist ein Test');
