@@ -6,7 +6,7 @@
 This library can detect the language of a given text string.
 It can parse given training text in many different idioms into a sequence of [N-grams](https://en.wikipedia.org/wiki/N-gram) and builds a database file in JSON format to be used in the detection phase.
 Then it can take a given text and detect its language using the database previously generated in the training phase.
-The library comes with text samples used for training and detecting text in 106 languages.
+The library comes with text samples used for training and detecting text in 110 languages.
 
 ## Table of Contents
 - [Installation with Composer](#installation-with-composer)
@@ -236,7 +236,7 @@ NULL
 <hr style="background-color:#666"/>
 
 ## Supported languages
-The library currently supports 106 languages.
+The library currently supports 110 languages.
 
 | Language | Language Code | Language | Language Code |
 | :--- | :--- | :--- | :--- |
@@ -251,24 +251,25 @@ The library currently supports 106 languages.
 | Bulgarian | bg | Kurdish | ku |
 | Bislama | bi | Latin | la |
 | Bengali | bn | Ganda | lg |
-| Tibetan | bo | Lao | lo |
-| Breton | br | Lithuanian | lt |
-| Bosnian (Cyrillic) | bs-Cyrl | Latvian | lv |
-| Bosnian (Latin) | bs-Latn | Marshallese | mh |
-| Catalan | ca | Mongolian, Halh (Cyrillic) | mn-Cyrl |
-| Chamorro | ch | Malay (Arabic) | ms-Arab |
-| Corsican | co | Malay (Latin) | ms-Latn |
-| Cree | cr | Maltese | mt |
-| Czech | cs | Norwegian, Bokmål | nb |
-| Welsh | cy | Ndonga | ng |
-| German | de | Dutch | nl |
-| Danish | dk | Norwegian, Nynorsk | nn |
-| Dzongkha | dz | Navajo | nv |
-| Greek (monotonic) | el-monoton | Polish | pl |
-| Greek (polytonic) | el-polyton | Portuguese (Brazil) | pt-BR |
-| English | en | Portuguese (Portugal) | pt-PT |
-| Esperanto | eo | Romanian | ro |
-| Spanish | es | Russian | ru |
+| Lingala | ln | Tibetan | bo |
+| Lao | lo | Breton | br |
+| Lithuanian | lt | Bosnian (Cyrillic) | bs-Cyrl |
+| Latvian | lv | Bosnian (Latin) | bs-Latn |
+| Marshallese | mh | Catalan | ca |
+| Mongolian, Halh (Cyrillic) | mn-Cyrl | Chamorro | ch |
+| Malay (Arabic) | ms-Arab | Corsican | co |
+| Malay (Latin) | ms-Latn | Cree | cr |
+| Maltese | mt | Czech | cs |
+| Norwegian, Bokmål | nb | Welsh | cy |
+| Ndonga | ng | German | de |
+| Dutch | nl | Danish | dk |
+| Norwegian, Nynorsk | nn | Dzongkha | dz |
+| Navajo | nv | Greek (monotonic) | el-monoton |
+| Polish | pl | Greek (polytonic) | el-polyton |
+| Portuguese (Brazil) | pt-BR | English | en |
+| Portuguese (Portugal) | pt-PT | Esperanto | eo |
+| Romanian | ro | Spanish | es |
+| Russian | ru | Sanskrit | sa |
 | Estonian | et | Slovak | sk |
 | Basque | eu | Slovene | sl |
 | Persian | fa | Somali | so |
@@ -278,12 +279,13 @@ The library currently supports 106 languages.
 | French | fr | Tamil | ta |
 | Frisian | fy | Thai | th |
 | Gaelic, Irish | ga | Tagalog | tl |
-| Gaelic, Scottish | gd | Turkish | tr |
-| Galician | gl | Tatar | tt |
-| Guarani | gn | Tahitian | ty |
-| Gujarati | gu | Uyghur (Arabic) | ug-Arab |
-| Hausa | ha | Uyghur (Latin) | ug-Latn |
-| Hebrew | he | Ukrainian | uk |
+| Tonga | to | Gaelic, Scottish | gd |
+| Turkish | tr | Galician | gl |
+| Tatar | tt | Guarani | gn |
+| Tahitian | ty | Gujarati | gu |
+| Uyghur (Arabic) | ug-Arab | Hausa | ha |
+| Uyghur (Latin) | ug-Latn | Hebrew | he |
+| Ukrainian | uk | Urdu | ur |
 | Hindi | hi | Uzbek | uz |
 | Croatian | hr | Venda | ve |
 | Hungarian | hu | Vietnamese | vi |

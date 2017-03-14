@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.1.0] - 2017-03-14
+### Added
+- Support for the languages Lingala, Sanskrit, Tonga and Urdu
+
 ## [3.0.0] - 2017-02-05
 ### Added
 - `CHANGELOG.md`
