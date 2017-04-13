@@ -117,6 +117,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      */
     public function bestResults(): LanguageResult
     {
+        if (!count($this->result))
+        {
+            return new LanguageResult;
+        }
         $first = array_values($this->result)[0];
 
         return new LanguageResult(array_filter($this->result, function ($value) use ($first) {
