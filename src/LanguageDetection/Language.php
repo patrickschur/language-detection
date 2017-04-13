@@ -48,32 +48,35 @@ class Language extends NgramParser
         $str = mb_strtolower($str);
 
         $samples = $this->getNgrams($str);
-
+        
         $result = [];
-
-        foreach ($this->tokens as $lang => $value)
+        
+        if (count($samples) > 0)
         {
-            $index = $sum = 0;
-            $value = array_flip($value);
-
-            foreach ($samples as $v)
+            foreach ($this->tokens as $lang => $value)
             {
-                if (isset($value[$v]))
+                $index = $sum = 0;
+                $value = array_flip($value);
+
+                foreach ($samples as $v)
                 {
-                    $x = $index++ - $value[$v];
-                    $y = $x >> (PHP_INT_SIZE * 8);
-                    $sum += ($x + $y) ^ $y;
-                    continue;
+                    if (isset($value[$v]))
+                    {
+                        $x = $index++ - $value[$v];
+                        $y = $x >> (PHP_INT_SIZE * 8);
+                        $sum += ($x + $y) ^ $y;
+                        continue;
+                    }
+
+                    $sum += $this->maxNgrams;
+                    ++$index;
                 }
 
-                $sum += $this->maxNgrams;
-                ++$index;
+                $result[$lang] = 1 - ($sum / ($this->maxNgrams * $index));
             }
 
-            $result[$lang] = 1 - ($sum / ($this->maxNgrams * $index));
+            arsort($result, SORT_NUMERIC);
         }
-
-        arsort($result, SORT_NUMERIC);
 
         return new LanguageResult($result);
     }
