@@ -48,9 +48,9 @@ class Language extends NgramParser
         $str = mb_strtolower($str);
 
         $samples = $this->getNgrams($str);
-        
+
         $result = [];
-        
+
         if (count($samples) > 0)
         {
             foreach ($this->tokens as $lang => $value)
