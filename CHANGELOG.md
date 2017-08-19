@@ -1,6 +1,20 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.2.0] - 2017-08-20
+### Added
+- Experimental support for custom directories. You can now specify your own path for translation files.
+- Credits
+
+### Changed
+- Corrections to Amharic (`am`) translation
+- Corrections to Czech (`cs`) translation
+- Corrections to Lao (`lo`) translation
+
+## [3.1.1] - 2017-07-27
+### Changed
+- Return empty object if no result was found
+
 ## [3.1.0] - 2017-03-14
 ### Added
 - Support for the languages Lingala, Sanskrit, Tonga and Urdu
