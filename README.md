@@ -56,9 +56,10 @@ Array
 
 ## API
 
-#### `__construct(array $result = [])`
+#### `__construct(array $result = [], string $dirname = '')`
 You can pass an array of languages to the constructor. To compare the desired sentence only with the given languages.
-This can dramatically increase the performance.
+This can dramatically increase the performance. 
+The other parameter is optional and the name of the directory where the translations files are located.
 ```php
 $ld = new Language(['de', 'en', 'nl']);
  
@@ -255,7 +256,13 @@ To do that, create a new directory in `resources` and add your training text to 
         |- spam.txt
 ```
 As you can see, we can also used it to detect spam or ham.
-If you have added your own files, you must first generate a language profile for it.
+
+When you stored your translation files outside of `resources`, you have to specify the path.
+```php
+$t->learn('YOUR_PATH_HERE');
+```
+
+Whenever you change one of the translation files you must first generate a language profile for it.
 This may take a few seconds.
 ```php
 use LanguageDetection\Trainer;
