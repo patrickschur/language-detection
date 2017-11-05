@@ -63,10 +63,11 @@ class Language extends NgramParser
         $str = mb_strtolower($str);
 
         $samples = $this->getNgrams($str);
+        $sample_count = count($samples);
 
         $result = [];
 
-        if (count($samples) > 0)
+        if ( $sample_count > 0)
         {
             foreach ($this->tokens as $lang => $value)
             {
@@ -83,11 +84,11 @@ class Language extends NgramParser
                         continue;
                     }
 
-                    $sum += $this->maxNgrams;
+                    $sum += $sample_count;
                     ++$index;
                 }
 
-                $result[$lang] = 1 - ($sum / ($this->maxNgrams * $index));
+                $result[$lang] = 1 - ($sum / ($sample_count * $index));
             }
 
             arsort($result, SORT_NUMERIC);
