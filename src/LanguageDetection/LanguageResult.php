@@ -83,7 +83,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      */
     public function __toString(): string
     {
-        return key($this->result);
+        return (string) key($this->result);
     }
 
     /**
