@@ -1,7 +1,7 @@
 {
-  "name": "gradzio/language-detection",
+  "name": "patrickschur/language-detection",
   "type": "library",
-  "description": "Fork of patrickschur/language-detection",
+  "description": "A language detection library for PHP. Detects the language from a given text string.",
   "keywords": ["language", "detection", "detect"],
   "homepage": "https://github.com/patrickschur/language-detection",
   "license": "MIT",
@@ -9,8 +9,8 @@
   "prefer-stable": true,
   "authors": [
     {
-      "name": "Gregory Radzio",
-      "email": "gregradzio@gmail.com"
+      "name": "Patrick Schur",
+      "email": "patrick_schur@outlook.de"
     }
   ],
   "autoload": {
