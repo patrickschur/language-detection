@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.3.0] - 2018-06-07
+### Added
+- Serbian cyrylic and serbian latin language files
+
+### Changed
+- The method `__toString` returns always a string
+
 ## [3.2.0] - 2017-08-20
 ### Added
 - Experimental support for custom directories. You can now specify your own path for translation files.
