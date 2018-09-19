@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.4.0] - 2018-09-19
+### Changed
+- Danish language code, thanks to [bbalet](https://github.com/bbalet)
+
 ## [3.3.0] - 2018-06-07
 ### Added
 - Serbian cyrylic and serbian latin language files

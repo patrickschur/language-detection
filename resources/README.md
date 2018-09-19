@@ -32,7 +32,7 @@ The files are provided by [Unicode.org](http://www.unicode.org/udhr).
 | 🇲🇹 Maltese | mt | 🇨🇿 Czech | cs |
 | 🇳🇴 Norwegian, Bokmål | nb | Welsh | cy |
 | Ndonga | ng | 🇩🇪 German | de |
-| 🇳🇱 Dutch | nl | 🇩🇰 Danish | dk |
+| 🇳🇱 Dutch | nl | 🇩🇰 Danish | da |
 | 🇳🇴 Norwegian, Nynorsk | nn | Dzongkha | dz |
 | Navajo | nv | 🇬🇷 Greek (monotonic) | el-monoton |
 | 🇵🇱 Polish | pl | 🇬🇷 Greek (polytonic) | el-polyton |
