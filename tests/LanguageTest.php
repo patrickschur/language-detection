@@ -24,9 +24,9 @@ class LanguageTest extends TestCase
 
         foreach (new \GlobIterator(__DIR__ . '/../resources/*/*.txt') as $txt)
         {
-            $content = file_get_contents($txt->getPathname());
+            $content = \file_get_contents($txt->getPathname());
 
-            $this->assertEquals(key($l->detect($content)->close()), $txt->getBasename('.txt'));
+            $this->assertEquals(\key($l->detect($content)->close()), $txt->getBasename('.txt'));
         }
     }
 
@@ -36,7 +36,7 @@ class LanguageTest extends TestCase
 
         $array = $l->detect('Das ist ein Test')->close();
 
-        $this->assertEquals(3, count($array));
+        $this->assertEquals(3, \count($array));
 
         $this->assertArrayHasKey('de', $array);
         $this->assertArrayHasKey('en', $array);
@@ -55,7 +55,7 @@ class LanguageTest extends TestCase
         {
             public function tokenize(string $str): array
             {
-                return preg_split('//u', $str, -1, PREG_SPLIT_NO_EMPTY);
+                return \preg_split('//u', $str, -1, PREG_SPLIT_NO_EMPTY);
             }
         }));
     }
@@ -69,7 +69,7 @@ class LanguageTest extends TestCase
     {
         $l = new Language();
 
-        $this->assertEquals($expected, key($l->detect($sample)->close()));
+        $this->assertEquals($expected, \key($l->detect($sample)->close()));
     }
 
     /**

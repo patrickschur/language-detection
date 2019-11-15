@@ -27,7 +27,7 @@ class LanguageResultTest extends TestCase
 
         for ($i = 0; $i < $count; $i++)
         {
-            $this->assertEquals($i, count($sample->limit(0, $i)->close()));
+            $this->assertEquals($i, \count($sample->limit(0, $i)->close()));
         }
     }
 
@@ -64,7 +64,7 @@ class LanguageResultTest extends TestCase
     {
         $l = new Language();
 
-        $this->assertEquals($expected, strval($l->detect($sample)));
+        $this->assertEquals($expected, \strval($l->detect($sample)));
     }
 
     public function testJsonSerialize()
@@ -73,9 +73,9 @@ class LanguageResultTest extends TestCase
 
         $expected = $l->detect('Example');
 
-        $serialized = json_encode($expected);
+        $serialized = \json_encode($expected);
 
-        $this->assertEquals($expected->close(), json_decode($serialized, true));
+        $this->assertEquals($expected->close(), \json_decode($serialized, true));
     }
 
     public function testArrayIterator()
@@ -97,9 +97,9 @@ class LanguageResultTest extends TestCase
 
         $a = $l->detect('Example')->bestResults()->close();
 
-        $a = array_values($a);
+        $a = \array_values($a);
         $first = $a[0];
-        $last = array_slice($a, -1)[0];
+        $last = \array_slice($a, -1)[0];
 
         $this->assertLessThanOrEqual(0.025, ($first - $last));
     }
