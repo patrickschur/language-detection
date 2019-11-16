@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.4.1] - 2019-11-16
+### Changed
+- Optimized performance by using fully-qualified function calls, thanks to [draco2003](https://github.com/draco2003)
+- PHP 7.2 or higher is now used for testing
+- Removed output, see issue [#22](https://github.com/patrickschur/language-detection/issues/22)
+
 ## [3.4.0] - 2018-09-19
 ### Changed
 - Danish language code, thanks to [bbalet](https://github.com/bbalet)
