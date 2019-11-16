@@ -20,19 +20,9 @@ class TrainerTest extends TestCase
     public function testLearn()
     {
         $t = new Trainer();
-
-        $t->setMaxNgrams(350);
-
-        $expected = '';
-
-        foreach (new \GlobIterator(__DIR__ . '/../resources/*/*.json') as $json)
-        {
-            $expected .= $json->getBasename('.json') . PHP_EOL;
-        }
-
-        $this->expectOutputString($expected);
-
         $t->learn();
+
+        $this->expectOutputString('');
     }
 
     public function testFilesAreReadable()
