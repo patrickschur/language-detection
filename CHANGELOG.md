@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [3.4.2] - 2019-11-16
+### Changed
+- Removed a build failure by using a newer version of PHPUnit
+
 ## [3.4.1] - 2019-11-16
 ### Changed
 - Optimized performance by using fully-qualified function calls, thanks to [draco2003](https://github.com/draco2003)

@@ -41,53 +41,48 @@ class TrainerTest extends TestCase
         }
     }
 
-    /**
-     * @expectedException \LogicException
-     */
     public function testExceptionIsMinLengthGreaterThanMaxLength()
     {
+        $this->expectException(\LogicException::class);
+
         $t = new Trainer();
 
         $t->setMaxLength(3);
         $t->setMinLength(42);
     }
 
-    /**
-     * @expectedException \LogicException
-     */
     public function testExceptionIsMinLengthLessThanZero()
     {
+        $this->expectException(\LogicException::class);
+
         $t = new Trainer();
 
         $t->setMinLength(-42);
     }
 
-    /**
-     * @expectedException \LogicException
-     */
     public function testExceptionIsMaxLengthLessThanMinLength()
     {
+        $this->expectException(\LogicException::class);
+
         $t = new Trainer();
 
         $t->setMinLength(1);
         $t->setMaxLength(0);
     }
 
-    /**
-     * @expectedException \LogicException
-     */
     public function testExceptionIsMaxNgramsEqualToZero()
     {
+        $this->expectException(\LogicException::class);
+
         $t = new Trainer();
 
         $t->setMaxNGrams(0);
     }
 
-    /**
-     * @expectedException \LogicException
-     */
     public function testExceptionIsMaxNgramsLessThanZero()
     {
+        $this->expectException(\LogicException::class);
+
         $t = new Trainer();
 
         $t->setMaxNGrams(-2);
