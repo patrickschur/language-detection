@@ -113,20 +113,20 @@ abstract class NgramParser
 
         foreach ($this->tokenize($str) as $word)
         {
-            $l = mb_strlen($word);
+            $l = \mb_strlen($word);
 
             for ($i = $this->minLength; $i <= $this->maxLength; ++$i)
             {
                 for ($j = 0; ($i + $j - 1) < $l; ++$j, ++$tmp)
                 {
-                    $tmp = &$tokens[$i][mb_substr($word, $j, $i)];
+                    $tmp = &$tokens[$i][\mb_substr($word, $j, $i)];
                 }
             }
         }
 
         foreach ($tokens as $i => $token)
         {
-            $sum = array_sum($token);
+            $sum = \array_sum($token);
 
             foreach ($token as $j => $value)
             {
@@ -134,18 +134,18 @@ abstract class NgramParser
             }
         }
 
-        if (!count($tokens))
+        if (!\count($tokens))
         {
             return [];
         }
 
-        $tokens = array_merge(...$tokens);
+        $tokens = \array_merge(...$tokens);
         unset($tokens['_']);
 
-        arsort($tokens, SORT_NUMERIC);
+        \arsort($tokens, SORT_NUMERIC);
 
-        return array_slice(
-            array_keys($tokens),
+        return \array_slice(
+            \array_keys($tokens),
             0,
             $this->maxNgrams
         );

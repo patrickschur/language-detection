@@ -83,7 +83,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      */
     public function __toString(): string
     {
-        return (string) key($this->result);
+        return (string) \key($this->result);
     }
 
     /**
@@ -92,7 +92,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      */
     public function whitelist(string ...$whitelist): LanguageResult
     {
-        return new LanguageResult(array_intersect_key($this->result, array_flip($whitelist)));
+        return new LanguageResult(\array_intersect_key($this->result, \array_flip($whitelist)));
     }
 
     /**
@@ -101,7 +101,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      */
     public function blacklist(string ...$blacklist): LanguageResult
     {
-        return new LanguageResult(array_diff_key($this->result, array_flip($blacklist)));
+        return new LanguageResult(\array_diff_key($this->result, \array_flip($blacklist)));
     }
 
     /**
@@ -117,14 +117,14 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      */
     public function bestResults(): LanguageResult
     {
-        if (!count($this->result))
+        if (!\count($this->result))
         {
             return new LanguageResult;
         }
 
-        $first = array_values($this->result)[0];
+        $first = \array_values($this->result)[0];
 
-        return new LanguageResult(array_filter($this->result, function ($value) use ($first) {
+        return new LanguageResult(\array_filter($this->result, function ($value) use ($first) {
             return ($first - $value) <= self::THRESHOLD ? true : false;
         }));
     }
@@ -144,6 +144,6 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      */
     public function limit(int $offset, int $length = null): LanguageResult
     {
-        return new LanguageResult(array_slice($this->result, $offset, $length));
+        return new LanguageResult(\array_slice($this->result, $offset, $length));
     }
 }

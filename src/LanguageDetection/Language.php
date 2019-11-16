@@ -31,23 +31,23 @@ class Language extends NgramParser
         {
             $dirname = __DIR__ . '/../../resources/*/*.json';
         }
-        else if (!is_dir($dirname) || !is_readable($dirname))
+        else if (!\is_dir($dirname) || !\is_readable($dirname))
         {
             throw new \InvalidArgumentException('Provided directory could not be found or is not readable');
         }
         else
         {
-            $dirname = rtrim($dirname, '/');
+            $dirname = \rtrim($dirname, '/');
             $dirname .= '/*/*.json';
         }
 
         $isEmpty = empty($lang);
 
-        foreach (glob($dirname) as $json)
+        foreach (\glob($dirname) as $json)
         {
-            if ($isEmpty || in_array(basename($json, '.json'), $lang))
+            if ($isEmpty || \in_array(\basename($json, '.json'), $lang))
             {
-                $this->tokens += json_decode(file_get_contents($json), true);
+                $this->tokens += \json_decode(\file_get_contents($json), true);
             }
         }
     }
@@ -60,18 +60,18 @@ class Language extends NgramParser
      */
     public function detect(string $str): LanguageResult
     {
-        $str = mb_strtolower($str);
+        $str = \mb_strtolower($str);
 
         $samples = $this->getNgrams($str);
 
         $result = [];
 
-        if (count($samples) > 0)
+        if (\count($samples) > 0)
         {
             foreach ($this->tokens as $lang => $value)
             {
                 $index = $sum = 0;
-                $value = array_flip($value);
+                $value = \array_flip($value);
 
                 foreach ($samples as $v)
                 {
@@ -90,7 +90,7 @@ class Language extends NgramParser
                 $result[$lang] = 1 - ($sum / ($this->maxNgrams * $index));
             }
 
-            arsort($result, SORT_NUMERIC);
+            \arsort($result, SORT_NUMERIC);
         }
 
         return new LanguageResult($result);
