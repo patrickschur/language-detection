@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.0.0] - 2020-08-09
+### Changed
+- Converted all resource files to PHP for performance reasons (thanks to @Pierstoval)
+
 ## [3.4.2] - 2019-11-16
 ### Changed
 - Removed a build failure by using a newer version of PHPUnit
