@@ -42,11 +42,8 @@ class Trainer extends NgramParser
             $content = \mb_strtolower(\file_get_contents($txt->getPathname()));
 
             \file_put_contents(
-                \substr_replace($txt->getPathname(), 'json', -3),
-                \json_encode(
-                    [ $txt->getBasename('.txt') => $this->getNgrams($content) ],
-                    JSON_UNESCAPED_UNICODE
-                )
+                \substr_replace($txt->getPathname(), 'php', -3),
+                \sprintf("<?php\n\nreturn %s;\n", var_export([ $txt->getBasename('.txt') => $this->getNgrams($content) ], true))
             );
         }
     }
