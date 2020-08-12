@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [4.0.1] - 2020-08-12
+### Changed
+- Fixed Unsupported operand types for custom directory (thanks to @iquito)
+
 ## [4.0.0] - 2020-08-09
 ### Changed
 - Converted all resource files to PHP for performance reasons (thanks to @Pierstoval)
