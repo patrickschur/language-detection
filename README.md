@@ -10,6 +10,7 @@ The library comes with text samples used for training and detecting text in 110 
 
 ## Table of Contents
 - [Installation with Composer](#installation-with-composer)
+- [How to upgrade from 3.y.z to 4.y.z?](#how-to-upgrade)
 - [Basic Usage](#basic-usage)
 - [API](#api)
 - [Method Chaining](#method-chaining)
@@ -25,6 +26,25 @@ The library comes with text samples used for training and detecting text in 110 
 
 ```bash
 $ composer require patrickschur/language-detection
+```
+
+## <a name="how-to-upgrade"></a> How to upgrade from `3.y.z` to `4.y.z`?
+
+**Important**: Only for people who are using a **custom directory** with their **own** translation files.
+
+Starting with version `4.y.z` we have updated the resource files. For performance reasons we now use PHP instead of JSON as a format. That means people who want to use `4.y.z` and used `3.y.z` before, have to upgrade their JSON files to PHP. You can use the following script to upgrade your resource files. Make sure you are executing the file inside the project folder or change the path if necessary.
+
+```php
+<?php
+
+$files = glob(__DIR__ . '/resources/**/*.json');
+
+foreach ($files as $file) {
+    $cnt = json_decode(file_get_contents($file), true);
+    $phpname = preg_replace('~\.json$~i', '.php', $file);
+    file_put_contents($phpname, "<?php\n\nreturn " . var_export($cnt, true) . ";\n");
+    unlink($file);
+}
 ```
 
 ## Basic Usage
