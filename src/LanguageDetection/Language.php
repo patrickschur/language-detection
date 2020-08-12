@@ -38,7 +38,7 @@ class Language extends NgramParser
         else
         {
             $dirname = \rtrim($dirname, '/');
-            $dirname .= '/*/*.json';
+            $dirname .= '/*/*.php';
         }
 
         $isEmpty = empty($lang);
