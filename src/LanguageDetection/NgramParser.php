@@ -30,7 +30,7 @@ abstract class NgramParser
     /**
      * @var int
      */
-    protected $maxNgrams = 310;
+    protected $maxNgrams = 9000;
 
     /**
      * @var TokenizerInterface
