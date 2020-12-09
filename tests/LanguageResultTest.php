@@ -21,7 +21,7 @@ class LanguageResultTest extends TestCase
     {
         $l = new Language();
 
-        $count = (new \GlobIterator(__DIR__ . '/../resources/*/*.json'))->count();
+        $count = (new \GlobIterator(__DIR__ . '/../resources/*/*.txt'))->count();
 
         $sample = $l->detect('Example');
 
