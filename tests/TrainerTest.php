@@ -35,7 +35,7 @@ class TrainerTest extends TestCase
 
     public function testFileIsWriteable()
     {
-        foreach (new \GlobIterator(__DIR__ . '/../resources/*/*.json') as $json)
+        foreach (new \GlobIterator(__DIR__ . '/../resources/*/*.txt') as $json)
         {
             $this->assertIsWritable($json->getPathname());
         }
