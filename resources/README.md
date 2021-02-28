@@ -35,7 +35,6 @@ The files are provided by [Unicode.org](http://www.unicode.org/udhr).
 | 🇳🇱 Dutch | nl | 🇩🇰 Danish | da |
 | 🇳🇴 Norwegian, Nynorsk | nn | Dzongkha | dz |
 | Navajo | nv | 🇬🇷 Greek (monotonic) | el-monoton |
-| Occitan | oc |
 | 🇵🇱 Polish | pl | 🇬🇷 Greek (polytonic) | el-polyton |
 | 🇵🇹 Portuguese (Brazil) | pt-BR | 🇬🇧 🇺🇸 English | en |
 | 🇵🇹 Portuguese (Portugal) | pt-PT | Esperanto | eo |
@@ -67,3 +66,4 @@ The files are provided by [Unicode.org](http://www.unicode.org/udhr).
 | Ido | io | 🇨🇳 Chinese, Mandarin (Simplified) | zh-Hans |
 | 🇮🇸 Icelandic | is | 🇨🇳 Chinese, Mandarin (Traditional) | zh-Hant |
 | Afaan Oromo | om | Swahili/Kiswahili | sw |
+| Occitan | oc |
