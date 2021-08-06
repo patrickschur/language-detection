@@ -36,7 +36,7 @@ The files are provided by [Unicode.org](http://www.unicode.org/udhr).
 | 🇳🇴 Norwegian, Nynorsk | nn | Dzongkha | dz |
 | Navajo | nv | 🇬🇷 Greek (monotonic) | el-monoton |
 | 🇵🇱 Polish | pl | 🇬🇷 Greek (polytonic) | el-polyton |
-| 🇵🇹 Portuguese (Brazil) | pt-BR | 🇬🇧 🇺🇸 English | en |
+| 🇧🇷 Portuguese (Brazil) | pt-BR | 🇬🇧 🇺🇸 English | en |
 | 🇵🇹 Portuguese (Portugal) | pt-PT | Esperanto | eo |
 | 🇷🇴 Romanian | ro | 🇪🇸 Spanish | es |
 | 🇷🇺 Russian | ru | Sanskrit | sa |
