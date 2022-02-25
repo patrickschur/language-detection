@@ -33,7 +33,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
     /**
      * @param mixed $offset
      * @return bool
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->result[$offset]);
@@ -42,7 +45,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
     /**
      * @param mixed $offset
      * @return mixed|null
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->result[$offset] ?? null;
@@ -52,7 +58,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      * @param mixed $offset
      * @param mixed $value
      * @return void
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (null === $offset) {
@@ -64,7 +73,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
 
     /**
      * @param mixed $offset
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->result[$offset]);
@@ -72,7 +84,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
 
     /**
      * @return array
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize(): array
     {
         return $this->result;
@@ -80,7 +95,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
 
     /**
      * @return string
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function __toString(): string
     {
         return (string) \key($this->result);
@@ -89,7 +107,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
     /**
      * @param \string[] ...$whitelist
      * @return LanguageResult
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function whitelist(string ...$whitelist): LanguageResult
     {
         return new LanguageResult(\array_intersect_key($this->result, \array_flip($whitelist)));
@@ -98,7 +119,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
     /**
      * @param \string[] ...$blacklist
      * @return LanguageResult
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function blacklist(string ...$blacklist): LanguageResult
     {
         return new LanguageResult(\array_diff_key($this->result, \array_flip($blacklist)));
@@ -106,7 +130,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
 
     /**
      * @return array
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function close(): array
     {
         return $this->result;
@@ -114,7 +141,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
 
     /**
      * @return LanguageResult
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function bestResults(): LanguageResult
     {
         if (!\count($this->result))
@@ -131,7 +161,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
 
     /**
      * @return \ArrayIterator
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function getIterator(): \ArrayIterator
     {
         return new \ArrayIterator($this->result);
@@ -141,7 +174,10 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      * @param int $offset
      * @param int|null $length
      * @return LanguageResult
-     */
+     *
+     * {@inheritdoc}
+    */
+    #[\ReturnTypeWillChange]
     public function limit(int $offset, int $length = null): LanguageResult
     {
         return new LanguageResult(\array_slice($this->result, $offset, $length));
