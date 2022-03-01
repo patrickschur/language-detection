@@ -34,7 +34,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      * @param mixed $offset
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->result[$offset]);
     }
@@ -43,7 +43,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      * @param mixed $offset
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): ?float
     {
         return $this->result[$offset] ?? null;
     }
@@ -53,7 +53,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      * @param mixed $value
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->result[] = $value;
@@ -65,7 +65,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
     /**
      * @param mixed $offset
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->result[$offset]);
     }
