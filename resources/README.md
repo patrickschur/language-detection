@@ -66,4 +66,4 @@ The files are provided by [Unicode.org](http://www.unicode.org/udhr).
 | Ido | io | 🇨🇳 Chinese, Mandarin (Simplified) | zh-Hans |
 | 🇮🇸 Icelandic | is | 🇨🇳 Chinese, Mandarin (Traditional) | zh-Hant |
 | Afaan Oromo | om | Swahili/Kiswahili | sw |
-| Occitan | oc |
+| Occitan | oc | Malayalam | ml |
