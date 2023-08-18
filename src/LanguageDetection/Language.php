@@ -15,7 +15,7 @@ namespace LanguageDetection;
 class Language extends NgramParser
 {
     /**
-     * @var array
+     * @var array<string, array<string, int>>
      */
     protected $tokens = [];
 
@@ -42,13 +42,18 @@ class Language extends NgramParser
         }
 
         $isEmpty = empty($lang);
+        $tokens = [];
 
         foreach (\glob($dirname) as $file)
         {
             if ($isEmpty || \in_array(\basename($file, '.php'), $lang))
             {
-                $this->tokens += require $file;
+                $tokens += require $file;
             }
+        }
+
+        foreach ($tokens as $lang => $value) {
+            $this->tokens[$lang] = \array_flip($value);
         }
     }
 
@@ -71,7 +76,6 @@ class Language extends NgramParser
             foreach ($this->tokens as $lang => $value)
             {
                 $index = $sum = 0;
-                $value = \array_flip($value);
 
                 foreach ($samples as $v)
                 {
