@@ -133,7 +133,7 @@ Array
 ```
 <hr style="background-color:#666"/>
 
-#### `limit(int $offset, int $length = null)`
+#### `limit(int $offset, ?int $length = null)`
 You can specify the number of records to return. For example the following code will return the top three entries.
 ```php
 $ld->detect('Mag het een onsje meer zijn?')->limit(0, 3)->close();
