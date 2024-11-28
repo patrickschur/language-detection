@@ -142,7 +142,7 @@ class LanguageResult implements \JsonSerializable, \IteratorAggregate, \ArrayAcc
      * @param int|null $length
      * @return LanguageResult
      */
-    public function limit(int $offset, int $length = null): LanguageResult
+    public function limit(int $offset, ?int $length = null): LanguageResult
     {
         return new LanguageResult(\array_slice($this->result, $offset, $length));
     }
